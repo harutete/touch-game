@@ -1,2 +1,2 @@
-# ramen
-ラーメン作る
+# ramen-master
+ラーメンを作るゲーム
