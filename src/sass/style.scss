@@ -1,6 +1,7 @@
 @charset 'utf-8';
 
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap');
+@import '_variable';
 
 :root {
   font-size: 10px;
@@ -15,9 +16,41 @@
 }
 
 body {
-  color: #3D0E1E;
+  color: $color-text;
   font: {
     family: 'Noto Sans JP', sans-serif;
     size: 1.4rem;
+  }
+}
+
+.content {
+  &-playing-display {
+    body[data-script-enabled="true"] & {
+      display: none;
+    }
+  }
+}
+
+.text {
+  &-balloon {
+    position: relative;
+    background: lighten($color-orange, 15%);
+    border-radius: 4px;
+    padding: 10px;
+    // body[data-script-enabled="true"] & {
+    //   display: none;
+    // }
+  }
+}
+
+.btn {
+  &-start {
+    display: inline-block;
+    background: $color-red;
+    border: none {
+      radius: 4px;
+    }
+    color: $color-white;
+    padding: 5px 10px;
   }
 }
