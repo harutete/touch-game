@@ -23,11 +23,32 @@ body {
   }
 }
 
+img {
+  vertical-align: bottom;
+  max-width: 100%;
+}
+
 .content {
-  &-playing-display {
+  &-playing-screen {
     body[data-script-enabled="true"] & {
       display: none;
     }
+  }
+  &-customer-img {
+    background: $color-white;
+    text-align: center;
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+  &-order-img {
+    background: $color-white;
+    border: 8px solid $color-orange {
+      radius: 4px;
+    }
+    text-align: center;
+    max-width: 85%;
+    margin: 20px auto 0;
+    padding: 0 20px;
   }
 }
 
@@ -36,10 +57,28 @@ body {
     position: relative;
     background: lighten($color-orange, 15%);
     border-radius: 4px;
+    text-align: center;
+    margin-bottom: 20px;
     padding: 10px;
     // body[data-script-enabled="true"] & {
     //   display: none;
     // }
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      right: 50%;
+      transform: translateX(50%);
+      border: 20px solid transparent {
+        top: 20px solid lighten($color-orange, 15%)
+      }
+    }
+  }
+  &-order {
+    font: {
+      size: 2rem;
+      weight: bold;
+    }
   }
 }
 

@@ -1,0 +1,78 @@
+[
+  {
+    "id": 1,
+    "name": "salt",
+    "description": "塩ラーメン",
+    "image": "/src/image/img_ramen_01.png",
+    "ingredients":[
+      {
+        "id": 1,
+        "name": "salt",
+        "image": "/src/image/img_salt_01.png"
+      },
+      {
+        "id": 4,
+        "name": "noodle",
+        "image": "/src/image/img_noodle_01.png"
+      },
+      {
+        "id": 5,
+        "name": "egg",
+        "image": "/src/image/img_egg_01.png"
+      },
+      {
+        "id": 7,
+        "name": "white_onion",
+        "image": "/src/image/img_onion_01.png"
+      },
+      {
+        "id": 8,
+        "name": "menma",
+        "image": "/src/image/img_menma_01.png"
+      },
+      {
+        "id": 9,
+        "name": "roasted_pork",
+        "image": "/src/image/img_roasted_pork_01.png"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "soy_sauce",
+    "description": "醤油ラーメン",
+    "image": "/src/image/img_ramen_02.png",
+    "ingredients":[
+      {
+        "id": 2,
+        "name": "say_sauce",
+        "image": "/src/image/img_soy_sauce_01.png"
+      },
+      {
+        "id": 4,
+        "name": "noodle",
+        "image": "/src/image/img_noodle_01.png"
+      },
+      {
+        "id": 5,
+        "name": "egg",
+        "image": "/src/image/img_egg_01.png"
+      },
+      {
+        "id": 7,
+        "name": "white_onion",
+        "image": "/src/image/img_onion_01.png"
+      },
+      {
+        "id": 9,
+        "name": "roasted_pork",
+        "image": "/src/image/img_roasted_pork_01.png"
+      },
+      {
+        "id": 11,
+        "name": "seaweed",
+        "image": "/src/image/img_seaweed_01.png"
+      }
+    ]
+  }
+]

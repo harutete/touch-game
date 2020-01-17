@@ -3,5 +3,7 @@
     "target": "esnext",
     "module": "commonjs",
     "noImplicitAny": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true
   }
 }

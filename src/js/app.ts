@@ -1,4 +1,7 @@
 import '../sass/style.scss'
+import menuData = require('../json/menu.json')
+import ingredientsData = require('../json/ingredients.json')
+import ShuffleData from './shuffle'
 
 class ramenMaster {
   btnStart: any
@@ -9,15 +12,46 @@ class ramenMaster {
     document.body.setAttribute('data-script-enabled', 'true')
     this.btnStart.addEventListener('click', () => {
       this.indicatePlayingScreen()
+      this.setOrder()
     })
   }
   indicatePlayingScreen() {
-    const playingScreen: HTMLElement = document.querySelector('.js-content-playing-screen') as HTMLElement
+    const playingScreen = document.querySelector('.js-content-playing-screen') as HTMLElement
     this.btnStart.style.display = 'none'
     playingScreen.style.display = 'block'
   }
   setOrder() {
+    const menu = menuData
+    const selectedMenu = menu[Math.floor(Math.random() * menu.length)]
+    const orderText = document.querySelector('.js-text-order')
+    const customerImage = document.querySelector('.js-img-customer')
+    const customer = [
+      '/src/image/img_boy_01.png',
+      '/src/image/img_boy_02.png',
+      '/src/image/img_girl_01.png',
+      '/src/image/img_girl_02.png',
+    ]
+    const customerIndex = Math.floor(Math.random() * customer.length)
+    const orderImg = document.querySelector('.js-img-order')
 
+    customerImage.setAttribute('src', customer[customerIndex])
+    orderText.textContent = selectedMenu.description
+    orderImg.setAttribute('src', selectedMenu.image)
+    orderImg.setAttribute('alt', selectedMenu.description)
+
+    this.setIngredientsPanel()
+  }
+  // 具材をランダムにシャッフルして並べるメソッド
+  setIngredientsPanel() {
+    const ingredients = ingredientsData
+    const shuffledingredients = new ShuffleData(ingredients)
+    console.log('shuffledingredients: ', shuffledingredients);
+  }
+  // クリックされたら具のパネルの色を変えるクラスをつけるメソッド
+  togglePanelClass() {
+  }
+  // OKボタンを押して組み合わせが正解かどうか判定するメソッド
+  checkIngredientsCombination() {
   }
 }
 
