@@ -52,6 +52,35 @@ img {
     margin: 20px auto 0;
     padding: 0 20px;
   }
+  &-order-ingredients {
+    display: flex;
+    flex-wrap: wrap;
+    background: $color-orange;
+    border-radius: 4px;
+    width: 500px;
+    margin: 20px auto 0;
+    padding-bottom: 10px;
+    .panel-ingredients {
+      width: (100% / 3);
+      padding: 10px 0 0 10px;
+      &:nth-child(3n) {
+        padding-right: 10px;
+      }
+      &-inner {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $color-white;
+        border-radius: 4px;
+        height: 100%;
+        padding: 5px;
+        img {
+          height: 150px;
+        }
+      }
+    }
+  }
 }
 
 .text {

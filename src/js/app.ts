@@ -49,13 +49,14 @@ class ramenMaster {
     let panelHtml = ''
 
     shuffledingredients.forEach(item => {
-      panelHtml += `<div><img src="${item.image}"></div>`
+      panelHtml += `<div class="js-panel-ingredients panel-ingredients"><span class="panel-ingredients-inner"><img src="${item.image}"></span></div>`
     })
 
     outputElem.insertAdjacentHTML("afterbegin", panelHtml)
   }
   // クリックされたら具のパネルの色を変えるクラスをつけるメソッド
-  togglePanelClass() {
+  togglePanelClass(elem: any) {
+    console.log(elem)
   }
   // OKボタンを押して組み合わせが正解かどうか判定するメソッド
   checkIngredientsCombination() {
