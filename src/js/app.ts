@@ -1,7 +1,7 @@
 import '../sass/style.scss'
 import menuData = require('../json/menu.json')
 import ingredientsData = require('../json/ingredients.json')
-import ShuffleData from './shuffle'
+import shuffleArray from './shuffle'
 
 class ramenMaster {
   btnStart: any
@@ -43,9 +43,16 @@ class ramenMaster {
   }
   // 具材をランダムにシャッフルして並べるメソッド
   setIngredientsPanel() {
+    const outputElem = document.querySelector('.js-content-order-ingredients')
     const ingredients = ingredientsData
-    const shuffledingredients = new ShuffleData(ingredients)
-    console.log('shuffledingredients: ', shuffledingredients);
+    const shuffledingredients = shuffleArray(ingredients)
+    let panelHtml = ''
+
+    shuffledingredients.forEach(item => {
+      panelHtml += `<div><img src="${item.image}"></div>`
+    })
+
+    outputElem.insertAdjacentHTML("afterbegin", panelHtml)
   }
   // クリックされたら具のパネルの色を変えるクラスをつけるメソッド
   togglePanelClass() {

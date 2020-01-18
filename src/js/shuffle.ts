@@ -1,22 +1,16 @@
-export default class shuffleData {
-  arr: any[]
+export default function shuffleArray(arr: { [key: string]: any }[]): { [key: string]: any }[] {
+  const array = [...arr]
+  const length = array.length
+  let i: number
 
-  constructor(arr: any[]) {
-    this.arr = arr
+  for (i = length - 1; i >= 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1))
+    const tmp = array[i]
+
+    array[i] = array[randomIndex]
+    array[randomIndex] = tmp
+    // [array[i], array[randomIndex]] = [array[randomIndex], array[i]]
   }
-
-  shuffle() {
-    const randomNumber = (num: number) => Math.floor(Math.random() * num)
-    const array = [...this.arr]
-    const length = array.length
-    let i
-
-    for(i = 0; i <= length - 1; i++) {
-      const j = randomNumber(i + 1)
-      array[i] = array[j]
-      array[j] = this.arr[i]
-    }
 
     return array
-  }
 }
