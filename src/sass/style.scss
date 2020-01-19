@@ -79,6 +79,11 @@ img {
           height: 150px;
         }
       }
+      &.is-active {
+        .panel-ingredients-inner {
+          background: $color-gray;
+        }
+      }
     }
   }
 }
