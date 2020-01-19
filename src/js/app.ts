@@ -98,10 +98,20 @@ class ramenMaster {
     })
 
     if (differenceArray.length === correctIndgredientsLength) {
-      console.log('正解')
+      const wrapper = document.querySelector('.js-content-order-ingredients')
+      wrapper.textContent = null
+      this.setSelectedMenuContent()
     } else {
-      console.log('不正解')
+      this.initActivePanels()
     }
+  }
+  // 不正解だった場合にクラスを外すメソッド
+  initActivePanels() {
+    const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
+
+    clickedPanels.forEach(item => {
+      item.classList.remove('is-active')
+    })
   }
 }
 
