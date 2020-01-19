@@ -44,7 +44,6 @@ class ramenMaster {
 
     this.setIngredientsPanel()
   }
-  // 具材をランダムにシャッフルして並べるメソッド
   setIngredientsPanel() {
     const outputElem = document.querySelector('.js-content-order-ingredients')
     const ingredients = ingredientsData
@@ -70,15 +69,19 @@ class ramenMaster {
       this.checkIngredientsCombination()
     })
   }
-  // クリックされたら具のパネルの色を変えるクラスをつけるメソッド
   togglePanelClass(event: any) {
     const clickedElemParent = event.target.closest('.js-panel-ingredients')
 
     clickedElemParent.classList.toggle('is-active')
   }
-  // OKボタンを押して組み合わせが正解かどうか判定するメソッド
   checkIngredientsCombination() {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
+
+    // クリックされた要素がなかったら処理を終了
+    if (!clickedPanels.length) {
+      return
+    }
+
     const IngredientsIdArray: number[] = [...clickedPanels].map((elem) => {
       return parseInt(elem.getAttribute('data-ingredients-id'), 10)
     }).sort((a: number, b: number): number => {
