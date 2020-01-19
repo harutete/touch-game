@@ -29,6 +29,9 @@ img {
 }
 
 .content {
+  &-wrapper {
+    padding: 10px;
+  }
   &-playing-screen {
     body[data-script-enabled="true"] & {
       display: none;
@@ -89,10 +92,19 @@ img {
 }
 
 .text {
+  &-left {
+    text-align: left;
+  }
+  &-center {
+    text-align: center;
+  }
+  &-right {
+    text-align: right;
+  }
   &-balloon {
     position: relative;
     background: lighten($color-orange, 15%);
-    border-radius: 4px;
+    border-radius: 50px;
     text-align: center;
     width: 80%;
     margin: 0 auto 30px;
@@ -126,6 +138,22 @@ img {
       radius: 4px;
     }
     box-shadow: 0 4px 0 0 darken($color-red, 10%);
+    color: $color-white;
+    margin-top: 20px;
+    padding: 5px 10px;
+    &:active {
+      bottom: -1px;
+    }
+  }
+  &-complete {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    background: $color-lblue;
+    border: none {
+      radius: 4px;
+    }
+    box-shadow: 0 4px 0 0 darken($color-lblue, 10%);
     color: $color-white;
     margin-top: 20px;
     padding: 5px 10px;
