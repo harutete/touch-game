@@ -47,10 +47,10 @@ class ramenMaster {
   setIngredientsPanel() {
     const outputElem = document.querySelector('.js-content-order-ingredients')
     const ingredients = ingredientsData
-    const shuffledingredients = shuffleArray(ingredients)
+    const shuffledIngredientsArray = shuffleArray(ingredients)
     let panelHtml = ''
 
-    shuffledingredients.forEach(item => {
+    shuffledIngredientsArray.forEach(item => {
       panelHtml += `<div data-ingredients-id=${item.id} class="js-panel-ingredients panel-ingredients"><span class="panel-ingredients-inner"><img src="${item.image}" class="js-panel-ingredients-img"></span></div>`
     })
 
@@ -92,12 +92,12 @@ class ramenMaster {
     }).sort((a: number, b: number): number => {
       return a - b
     })
-    const correctIndgredientsLength = correctIngredientsIdArray.length
+    const correctIngredientsLength = correctIngredientsIdArray.length
     const differenceArray = IngredientsIdArray.filter((item: number, index: number) => {
       return item === correctIngredientsIdArray[index]
     })
 
-    if (differenceArray.length === correctIndgredientsLength) {
+    if (differenceArray.length === correctIngredientsLength) {
       const wrapper = document.querySelector('.js-content-order-ingredients')
       wrapper.textContent = null
       this.setSelectedMenuContent()
