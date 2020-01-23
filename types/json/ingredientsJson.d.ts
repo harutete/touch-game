@@ -5,6 +5,6 @@ declare module '*/ingredients.json' {
     image: string
   }
 
-  const data: ingredientsData
+  const data: ingredientsData[]
   export = data
 }

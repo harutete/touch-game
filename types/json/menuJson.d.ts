@@ -6,6 +6,6 @@ declare module '*/menu.json' {
     ingredients: []
   }
 
-  const data: menuList
+  const data: menuList[]
   export = data
 }
