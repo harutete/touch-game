@@ -38,21 +38,29 @@ img {
     }
     margin-top: 20px;
   }
-  &-customer-img-group {
+  &-customer {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: -20px;
+    & > div {
+      margin-right: 20px;
+    }
   }
   &-customer-img {
     background: $color-white;
-    text-align: center;
-    margin-right: 20px;
+    border: 1px solid $color-orange {
+      radius: 50%;
+    }
+    width: 120px;
+    height: 120px;
+    padding: 10px;
   }
-  &-order-img {
+  &-customer-order-img {
     background: lighten($color-orange, 20%);
     border-radius: 50%;
-    width: 170px;
+    width: 120px;
+    height: 120px;
     margin-right: 20px;
     padding: 10px;
   }
@@ -99,6 +107,33 @@ img {
   }
 }
 
+.hdg {
+  &-01 {
+    text-align: center;
+    &__inner {
+      display: inline-block;
+      position: relative;
+      padding: 0 60px;
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: $color-red;
+        height: 2px;
+        width: 50px;
+      }
+      &::before {
+        left: 0;
+      }
+      &::after {
+        right: 0;
+      }
+    }
+  }
+}
+
 .text {
   &-left {
     text-align: left;
@@ -120,11 +155,15 @@ img {
     &::before {
       content: '';
       position: absolute;
-      bottom: -40px;
-      right: 50%;
-      transform: translateX(50%);
-      border: 20px solid transparent {
-        top: 20px solid lighten($color-orange, 15%)
+    }
+  }
+  &-balloon--left {
+    &::before {
+      left: -15px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 10px solid transparent {
+        right: 10px solid lighten($color-orange, 15%)
       }
     }
   }
