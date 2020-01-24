@@ -38,22 +38,23 @@ img {
     }
     margin-top: 20px;
   }
+  &-customer-img-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: -20px;
+  }
   &-customer-img {
     background: $color-white;
     text-align: center;
-    margin-top: 20px;
-    padding: 0 20px;
+    margin-right: 20px;
   }
   &-order-img {
-    background: $color-white;
-    border: 8px solid $color-orange {
-      radius: 4px;
-    }
-    text-align: center;
-    width: 85%;
-    max-width: 250px;
-    margin: 20px auto 0;
-    padding: 0 20px;
+    background: lighten($color-orange, 20%);
+    border-radius: 50%;
+    width: 170px;
+    margin-right: 20px;
+    padding: 10px;
   }
   &-order-ingredients {
     display: flex;
@@ -64,22 +65,32 @@ img {
     margin: 20px auto 0;
     padding-bottom: 10px;
     .panel-ingredients {
-      width: (100% / 3);
+      display: inline-block;
+      position: relative;
+      width: 120px;
+      height: 120px;
+      box-shadow: inset 0 0 4px rgba($color-gray, .8);
       padding: 10px 0 0 10px;
-      &:nth-child(3n) {
+      &:nth-child(4n) {
         padding-right: 10px;
       }
       &-inner {
         cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: $color-white;
-        border-radius: 4px;
-        height: 100%;
-        padding: 5px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient($color-white 100%, $color-gray 0%);
+        box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.5), 0 2px 2px rgba(0, 0, 0, 0.19);
+        border: {
+          bottom: solid 2px #b5b5b5;
+          radius: 50%;
+        }
+        width: 100px;
+        height: 100px;
+        padding: 10px;
         img {
-          height: 150px;
+          height: 80px;
         }
       }
       &.is-active {
