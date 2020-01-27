@@ -110,26 +110,26 @@ img {
 .hdg {
   &-01 {
     text-align: center;
-    &__inner {
-      display: inline-block;
-      position: relative;
-      padding: 0 60px;
-      &::before,
-      &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: $color-red;
-        height: 2px;
-        width: 50px;
-      }
-      &::before {
-        left: 0;
-      }
-      &::after {
-        right: 0;
-      }
+  }
+  &-01__inner {
+    display: inline-block;
+    position: relative;
+    padding: 0 60px;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: $color-red;
+      height: 2px;
+      width: 50px;
+    }
+    &::before {
+      left: 0;
+    }
+    &::after {
+      right: 0;
     }
   }
 }
