@@ -92,6 +92,11 @@
         "image": "/src/image/img_noodle_01.png"
       },
       {
+        "id": 6,
+        "name": "green_onion",
+        "image": "/src/image/img_green_onion_01.png"
+      },
+      {
         "id": 9,
         "name": "roasted_pork",
         "image": "/src/image/img_roasted_pork_01.png"
