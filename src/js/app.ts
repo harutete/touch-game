@@ -20,8 +20,11 @@ class TouchGame {
   }
   indicatePlayingScreen() {
     const playingScreen = document.querySelector('.js-content-playing-screen') as HTMLElement
+    const beforeScreen = document.querySelector('.js-content-before-screen') as HTMLElement
+
     this._startBtn.style.display = 'none'
     playingScreen.style.display = 'block'
+    beforeScreen.style.display = 'none'
   }
   setSelectedMenuContent() {
     const menu = menuData
