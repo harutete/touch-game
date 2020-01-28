@@ -3,7 +3,7 @@ import menuData = require('../json/menu.json')
 import ingredientsData = require('../json/ingredients.json')
 import shuffleArray from './shuffle'
 
-class ramenMaster {
+class TouchGame {
   private readonly _startBtn: any
   private _selectedMenu: any | null
 
@@ -124,4 +124,4 @@ class ramenMaster {
   }
 }
 
-new ramenMaster().init()
+new TouchGame().init()
