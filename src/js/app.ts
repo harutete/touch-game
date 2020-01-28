@@ -4,11 +4,11 @@ import ingredientsData = require('../json/ingredients.json')
 import shuffleArray from './shuffle'
 
 class TouchGame {
-  private readonly _startBtn: any
-  private _selectedMenu: any | null
+  private readonly _startBtn: HTMLButtonElement
+  private _selectedMenu: { [key: string]: any } | null
 
   constructor() {
-    this._startBtn= document.querySelector('.js-btn-start')
+    this._startBtn = document.querySelector('.js-btn-start')
     this._selectedMenu = null
   }
   init() {
