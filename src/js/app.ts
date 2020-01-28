@@ -4,28 +4,28 @@ import ingredientsData = require('../json/ingredients.json')
 import shuffleArray from './shuffle'
 
 class ramenMaster {
-  startBtn: any
-  selectedMenu: any | null
+  private readonly _startBtn: any
+  private _selectedMenu: any | null
 
   constructor() {
-    this.startBtn = document.querySelector('.js-btn-start')
-    this.selectedMenu = null
+    this._startBtn= document.querySelector('.js-btn-start')
+    this._selectedMenu = null
   }
   init() {
     document.body.setAttribute('data-script-enabled', 'true')
-    this.startBtn.addEventListener('click', () => {
+    this._startBtn.addEventListener('click', () => {
       this.indicatePlayingScreen()
       this.setSelectedMenuContent()
     })
   }
   indicatePlayingScreen() {
     const playingScreen = document.querySelector('.js-content-playing-screen') as HTMLElement
-    this.startBtn.style.display = 'none'
+    this._startBtn.style.display = 'none'
     playingScreen.style.display = 'block'
   }
   setSelectedMenuContent() {
     const menu = menuData
-    this.selectedMenu = menu[Math.floor(Math.random() * menu.length)]
+    this._selectedMenu = menu[Math.floor(Math.random() * menu.length)]
     const orderText = document.querySelector('.js-text-order')
     const customerImage = document.querySelector('.js-img-customer')
     const customer = [
@@ -38,9 +38,9 @@ class ramenMaster {
     const orderImg = document.querySelector('.js-img-order')
 
     customerImage.setAttribute('src', customer[customerIndex])
-    orderText.textContent = this.selectedMenu.description
-    orderImg.setAttribute('src', this.selectedMenu.image)
-    orderImg.setAttribute('alt', this.selectedMenu.description)
+    orderText.textContent = this._selectedMenu.description
+    orderImg.setAttribute('src', this._selectedMenu.image)
+    orderImg.setAttribute('alt', this._selectedMenu.description)
 
     this.setIngredientsPanel()
   }
@@ -87,7 +87,7 @@ class ramenMaster {
     }).sort((a: number, b: number): number => {
       return a - b
     })
-    const correctIngredientsIdArray: number[] = this.selectedMenu.ingredients.map((item:any) => {
+    const correctIngredientsIdArray: number[] = this._selectedMenu.ingredients.map((item:any) => {
       return parseInt(item.id, 10)
     }).sort((a: number, b: number): number => {
       return a - b
@@ -118,6 +118,7 @@ class ramenMaster {
     const point = 30 // 1問正解時に加算されるポイント
     const scoreBoard = document.querySelector('.js-content-score')
     let correctAnswerCount = 0
+    let totalPoint = point * correctAnswerCount
 
     correctAnswerCount++
   }
