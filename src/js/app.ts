@@ -3,6 +3,7 @@ import menuData = require('../json/menu.json')
 import ingredientsData = require('../json/ingredients.json')
 import shuffleArray from './shuffle'
 import Timer from './Timer'
+import AddScore from './AddScore'
 
 class TouchGame {
   private readonly _startBtn: HTMLButtonElement
