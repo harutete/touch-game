@@ -8,10 +8,12 @@ import AddScore from './AddScore'
 class TouchGame {
   private readonly _startBtn: HTMLButtonElement
   private _selectedMenu: { [key: string]: any } | null
+  private _count: number
 
   constructor() {
     this._startBtn = document.querySelector('.js-btn-start')
     this._selectedMenu = null
+    this._count = 0
   }
   init() {
     document.body.setAttribute('data-script-enabled', 'true')
@@ -85,6 +87,7 @@ class TouchGame {
   }
   checkIngredientsCombination() {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
+    const score = 30 // 1問正解すると30点追加
 
     // クリックされた要素がなかったら処理を終了
     if (!clickedPanels.length) {
@@ -108,6 +111,10 @@ class TouchGame {
 
     if (differenceArray.length === correctIngredientsLength) {
       const wrapper = document.querySelector('.js-content-order-ingredients')
+      this._count++
+      const totalScore = new AddScore(score).appendScore(this._count)
+
+      document.querySelector('.js-content-score').textContent = totalScore.toString()
       wrapper.textContent = null
       this.setSelectedMenuContent()
     } else {
