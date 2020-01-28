@@ -2,6 +2,7 @@ import '../sass/style.scss'
 import menuData = require('../json/menu.json')
 import ingredientsData = require('../json/ingredients.json')
 import shuffleArray from './shuffle'
+import Timer from './Timer'
 
 class TouchGame {
   private readonly _startBtn: HTMLButtonElement
@@ -21,10 +22,14 @@ class TouchGame {
   indicatePlayingScreen() {
     const playingScreen = document.querySelector('.js-content-playing-screen') as HTMLElement
     const beforeScreen = document.querySelector('.js-content-before-screen') as HTMLElement
+    const limit = 1000 * 60 * 3 // 3分
+    const timer = new Timer(document.querySelector('.js-content-time'), limit)
 
     this._startBtn.style.display = 'none'
     playingScreen.style.display = 'block'
     beforeScreen.style.display = 'none'
+
+    timer.countDownTimer()
   }
   setSelectedMenuContent() {
     const menu = menuData
