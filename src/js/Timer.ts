@@ -5,14 +5,12 @@ class Timer {
     this._wrap = wrap
     this._limit = ms
   }
-  countDownTimer() {
+  countDownTimer(): void {
     let timeLimitMs = this._limit
-    let count = 1
     const timerId = () => {
       timeLimitMs = timeLimitMs - 1000
       const formatLimit = Math.floor(timeLimitMs / 1000)
       this._wrap.textContent = formatLimit.toString()
-      count++
 
       setTimeout(() => {
         timerId()
