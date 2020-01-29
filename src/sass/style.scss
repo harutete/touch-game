@@ -1,6 +1,6 @@
 @charset 'utf-8';
 
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap');
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,700&display=swap');
 @import '_variable';
 
 :root {
@@ -18,7 +18,7 @@
 body {
   color: $color-text;
   font: {
-    family: 'Noto Sans JP', sans-serif;
+    family: 'M PLUS Rounded 1c', sans-serif;
     size: 1.4rem;
   }
 }
@@ -122,27 +122,41 @@ img {
 
 .hdg {
   &-01 {
+    font: {
+      size: 4rem;
+      weight: bold;
+    }
     text-align: center;
   }
   &-01__inner {
     display: inline-block;
     position: relative;
-    padding: 0 60px;
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: $color-red;
-      height: 2px;
-      width: 50px;
-    }
+    top: 6px;
+    left: 6px;
+    color: $color-red;
     &::before {
-      left: 0;
+      content: ' ';
+      display: block;
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      bottom: -2px;
+      right: -2px;
+      z-index: 1;
+      color: darken($color-red, 30%);
+      background: {
+        image: linear-gradient(45deg, $color-white 12.5%, rgba($color-red, 0) 12.5%, rgba($color-red, 0) 37.5%, $color-white 37.5%, $color-white 62.5%, rgba($color-red, 0) 62.5%, rgba($color-red, 0) 87.5%, $color-white 87.5%);
+        size: 6px 6px;
+      }
     }
     &::after {
-      right: 0;
+      content:attr(data-text);
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      z-index: 2;
+      color: darken($color-red, 30%);
+      text-shadow: 2px 2px $color-white;
     }
   }
 }
