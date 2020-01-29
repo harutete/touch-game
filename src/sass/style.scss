@@ -123,7 +123,7 @@ img {
 .hdg {
   &-01 {
     font: {
-      size: 4rem;
+      size: 5rem;
       weight: bold;
     }
     text-align: center;
@@ -143,7 +143,7 @@ img {
       bottom: -2px;
       right: -2px;
       z-index: 1;
-      color: darken($color-red, 30%);
+      color: darken($color-red, 20%);
       background: {
         image: linear-gradient(45deg, $color-white 12.5%, rgba($color-red, 0) 12.5%, rgba($color-red, 0) 37.5%, $color-white 37.5%, $color-white 62.5%, rgba($color-red, 0) 62.5%, rgba($color-red, 0) 87.5%, $color-white 87.5%);
         size: 6px 6px;
@@ -155,7 +155,7 @@ img {
       top: -6px;
       left: -6px;
       z-index: 2;
-      color: darken($color-red, 30%);
+      color: darken($color-red, 20%);
       text-shadow: 2px 2px $color-white;
     }
   }

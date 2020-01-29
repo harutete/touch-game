@@ -129,15 +129,6 @@ class TouchGame {
       item.classList.remove('is-active')
     })
   }
-  // スコアをつける
-  addScore() {
-    const point = 30 // 1問正解時に加算されるポイント
-    const scoreBoard = document.querySelector('.js-content-score')
-    let correctAnswerCount = 0
-    let totalPoint = point * correctAnswerCount
-
-    correctAnswerCount++
-  }
 }
 
 new TouchGame().init()
