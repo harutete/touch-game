@@ -32,7 +32,7 @@ class TouchGame {
     playingScreen.style.display = 'block'
     beforeScreen.style.display = 'none'
 
-    timer.countDownTimer()
+    timer.countdownTimer()
   }
   setSelectedMenuContent() {
     const menu = menuData
