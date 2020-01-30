@@ -114,7 +114,7 @@ class TouchGame {
       this._count++
       const totalScore = new AddScore(score).appendScore(this._count)
 
-      document.querySelector('.js-content-score').textContent = totalScore.toString()
+      document.querySelector('.js-state-score').textContent = totalScore.toString()
       wrapper.textContent = null
       this.setSelectedMenuContent()
     } else {
