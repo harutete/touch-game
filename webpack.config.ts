@@ -1,12 +1,12 @@
 module.exports = {
   mode: 'development',
-  entry: './src/js/app.ts', //ファイルをまとめる際のエントリーポイント
+  entry: './src/js/app.ts', // ファイルをまとめる際のエントリーポイント
   output: {
     path: __dirname,
-    filename: './dist/master.js' //まとめた結果出力されるファイル名
+    filename: './dist/master.js' // まとめた結果出力されるファイル名
   },
   resolve: {
-    extensions: ['.ts', '.js'] //拡張子がtsだったらTypescirptでコンパイルする
+    extensions: ['.ts', '.js'] // 拡張子がtsだったらTypescirptでコンパイルする
   },
   module: {
     rules: [
