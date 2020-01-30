@@ -7,7 +7,7 @@ class Timer {
     this._limit = ms
     this.timerId = null
   }
-  countdownTimer(): void {
+  public countdownTimer(): void {
     let limitMs = this._limit
     this.timerId = (): void => {
       limitMs = limitMs - 1000
@@ -26,7 +26,7 @@ class Timer {
     this.timerId()
   }
   // タイマーを一時的に止める
-  pauseCountdown(event: any, ms: number) {
+  public pauseCountdown(event: any, ms: number): void {
     const promise = new Promise((resolve) => {
       setTimeout(() => {
         event()

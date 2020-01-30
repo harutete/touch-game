@@ -5,7 +5,7 @@ class AddScore {
     this._score = count
     this._totalScore = 0
   }
-  appendScore(count: number) {
+  public appendScore(count: number): number {
     return this._totalScore = this._score * count
   }
 }

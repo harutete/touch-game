@@ -9,32 +9,34 @@ class TouchGame {
   private readonly _startBtn: HTMLButtonElement
   private _selectedMenu: { [key: string]: any } | null
   private _count: number
+  private _timer: null | any
 
   constructor() {
     this._startBtn = document.querySelector('.js-btn-start')
     this._selectedMenu = null
     this._count = 0
+    this._timer = null
   }
-  init() {
+  public init(): void {
     document.body.setAttribute('data-script-enabled', 'true')
     this._startBtn.addEventListener('click', () => {
       this.indicatePlayingScreen()
       this.setSelectedMenuContent()
     })
   }
-  indicatePlayingScreen() {
+  private indicatePlayingScreen(): void {
     const playingScreen = document.querySelector('.js-content-playing-screen') as HTMLElement
     const beforeScreen = document.querySelector('.js-content-before-screen') as HTMLElement
     const limit = 1000 * 60 * 3 // 3分
-    const timer = new Timer(document.querySelector('.js-state-time'), limit)
+    this._timer = new Timer(document.querySelector('.js-state-time'), limit)
 
     this._startBtn.style.display = 'none'
     playingScreen.style.display = 'block'
     beforeScreen.style.display = 'none'
 
-    timer.countdownTimer()
+    this._timer.countdownTimer()
   }
-  setSelectedMenuContent() {
+  private setSelectedMenuContent(): void {
     const menu = menuData
     this._selectedMenu = menu[Math.floor(Math.random() * menu.length)]
     const orderText = document.querySelector('.js-text-order')
@@ -55,7 +57,7 @@ class TouchGame {
 
     this.setIngredientsPanel()
   }
-  setIngredientsPanel() {
+  private setIngredientsPanel(): void {
     const outputElem = document.querySelector('.js-content-order-ingredients')
     const ingredients = ingredientsData
     const shuffledIngredientsArray = shuffleArray(ingredients)
@@ -68,7 +70,7 @@ class TouchGame {
     outputElem.insertAdjacentHTML("afterbegin", panelHtml)
     this.findPanelElem()
   }
-  findPanelElem() {
+  private findPanelElem():void {
     const panels = document.querySelectorAll('.js-panel-ingredients')
     const completeBtn = document.querySelector('.js-btn-complete')
 
@@ -80,12 +82,12 @@ class TouchGame {
       this.checkIngredientsCombination()
     })
   }
-  togglePanelClass(event: any) {
+  private togglePanelClass(event: any):void {
     const clickedElemParent = event.target.closest('.js-panel-ingredients')
 
     clickedElemParent.classList.toggle('is-active')
   }
-  checkIngredientsCombination() {
+  private checkIngredientsCombination():void {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
     const score = 30 // 1問正解すると30点追加
 
@@ -122,7 +124,7 @@ class TouchGame {
     }
   }
   // 不正解だった場合にクラスを外すメソッド
-  initActivePanels() {
+  private initActivePanels(): void {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
 
     clickedPanels.forEach(item => {
