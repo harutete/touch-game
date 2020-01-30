@@ -22,8 +22,9 @@ class TouchGame {
     this._count = 0
     this._timer = null
   }
+
   public init(): void {
-    const hdg = document.querySelector('.js-hdg-01') as HTMLElement
+    const hdg = document.querySelector('.js-hdg-01')
     const isBound = 'is-bound'
 
     document.body.setAttribute('data-script-enabled', 'true')
@@ -55,6 +56,7 @@ class TouchGame {
 
     this._timer.countdownTimer()
   }
+
   private setSelectedMenuContent(): void {
     const menu = menuData
     this._selectedMenu = menu[Math.floor(Math.random() * menu.length)]
@@ -76,6 +78,7 @@ class TouchGame {
 
     this.setIngredientsPanel()
   }
+
   private setIngredientsPanel(): void {
     const outputElem = document.querySelector('.js-content-order-ingredients')
     const ingredients = ingredientsData
@@ -89,6 +92,7 @@ class TouchGame {
     outputElem.insertAdjacentHTML("afterbegin", panelHtml)
     this.findPanelElem()
   }
+
   private findPanelElem():void {
     const panels = document.querySelectorAll('.js-panel-ingredients')
     const completeBtn = document.querySelector('.js-btn-complete')
@@ -101,11 +105,13 @@ class TouchGame {
       this.checkIngredientsCombination()
     })
   }
+
   private togglePanelClass(event: any):void {
     const clickedElemParent = event.target.closest('.js-panel-ingredients')
 
     clickedElemParent.classList.toggle('is-active')
   }
+
   private checkIngredientsCombination():void {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
     const score = 30 // 1問正解すると30点追加
@@ -133,7 +139,7 @@ class TouchGame {
     if (differenceArray.length === correctIngredientsLength) {
       const wrapper = document.querySelector('.js-content-order-ingredients')
       this._count++
-      const totalScore = new AddScore(score).appendScore(this._count)
+      const totalScore = new AddScore().appendScore(score, this._count)
 
       document.querySelector('.js-state-score').textContent = totalScore.toString()
       wrapper.textContent = null
@@ -142,6 +148,7 @@ class TouchGame {
       this.initActivePanels()
     }
   }
+
   // 不正解だった場合にクラスを外すメソッド
   private initActivePanels(): void {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
