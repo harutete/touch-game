@@ -27,14 +27,17 @@ class Timer {
 
   // タイマーを一時的に止める
   public pauseCountdown(method: any, ms: number): void {
+    clearTimeout(this._timerId)
+
     const promise = new Promise((resolve) => {
       setTimeout(() => {
-        method()
+        method
         resolve()
       }, ms)
     })
+
     promise.then(() => {
-      clearTimeout(this._timerId)
+      this.countdownTimer()
     })
   }
 }

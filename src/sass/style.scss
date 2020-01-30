@@ -143,6 +143,43 @@ img {
       }
     }
   }
+  &-popup {
+    display: none;
+    opacity: 0;
+    transition: .2s ease;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: rgba($color-white, .8);
+    border-radius: 5px;
+    box-shadow: 0 0 10px 5px rgba($color-gray, .8);
+    padding: 15px;
+    &.is-correct {
+      display: block;
+      opacity: 1;
+      &::before {
+        content: '正解！';
+        color: $color-red;
+        font: {
+          size: 4rem;
+          weight: bold;
+        }
+      }
+    }
+    &.is-incorrect {
+      display: block;
+      opacity: 1;
+      &::before {
+        content: '不正解！';
+        color: $color-lblue;
+        font: {
+          size: 4rem;
+          weight: bold;
+        }
+      }
+    }
+  }
 }
 
 .hdg {

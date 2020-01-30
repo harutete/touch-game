@@ -140,8 +140,10 @@ class TouchGame {
       const wrapper = document.querySelector('.js-content-order-ingredients')
       this._count++
       const totalScore = new AddScore().appendScore(score, this._count)
-
       document.querySelector('.js-state-score').textContent = totalScore.toString()
+
+      this._timer.pauseCountdown(this.setPopup(document.querySelector('.js-content-popup'), 'is-correct'), 3000)
+
       wrapper.textContent = null
       this.setSelectedMenuContent()
     } else {
@@ -149,9 +151,19 @@ class TouchGame {
     }
   }
 
+  public setPopup(item: HTMLElement, className: string): void {
+    this.appendClass(item, className)
+
+    setTimeout(() => {
+      this.removeClass(item, className)
+    }, 3000);
+  }
+
   // 不正解だった場合にクラスを外すメソッド
   private initActivePanels(): void {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
+
+    this._timer.pauseCountdown(this.setPopup(document.querySelector('.js-content-popup'), 'is-incorrect'), 3000)
 
     clickedPanels.forEach(item => {
       this.removeClass(item, 'is-active')
