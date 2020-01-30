@@ -8,10 +8,10 @@ class Timer {
     this.timerId = null
   }
   countdownTimer(): void {
-    let timeLimitMs = this._limit
+    let limitMs = this._limit
     this.timerId = (): void => {
-      timeLimitMs = timeLimitMs - 1000
-      const limitSec = Math.floor(timeLimitMs / 1000)
+      limitMs = limitMs - 1000
+      const limitSec = Math.floor(limitMs / 1000)
       this._wrap.textContent = limitSec.toString()
 
       setTimeout(() => {
@@ -19,7 +19,7 @@ class Timer {
       }, 1000)
     }
 
-    if (timeLimitMs === 0) {
+    if (limitMs === 0) {
       clearTimeout(this.timerId)
     }
 
