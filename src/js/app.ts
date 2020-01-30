@@ -1,6 +1,11 @@
+// scss
 import '../sass/style.scss'
+
+// data
 import menuData = require('../json/menu.json')
 import ingredientsData = require('../json/ingredients.json')
+
+// method
 import ShuffleArray from './ShuffleArray'
 import Timer from './Timer'
 import AddScore from './AddScore'
