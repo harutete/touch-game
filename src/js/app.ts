@@ -14,7 +14,7 @@ class TouchGame {
   private readonly _startBtn: HTMLButtonElement
   private _selectedMenu: { [key: string]: any } | null
   private _count: number
-  private _timer: null | any
+  private _timer: any | null
 
   constructor() {
     this._startBtn = document.querySelector('.js-btn-start')
@@ -94,8 +94,6 @@ class TouchGame {
   }
   private checkIngredientsCombination():void {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
-    const score = 30 // 1問正解すると30点追加
-
     // クリックされた要素がなかったら処理を終了
     if (!clickedPanels.length) {
       return
@@ -106,15 +104,19 @@ class TouchGame {
     }).sort((a: number, b: number): number => {
       return a - b
     })
-    const correctIngredientsIdArray: number[] = this._selectedMenu.ingredients.map((item:any) => {
-      return parseInt(item.id, 10)
-    }).sort((a: number, b: number): number => {
-      return a - b
-    })
+    const correctIngredientsIdArray: number[] = this._selectedMenu.ingredients
+      .map((item:any) => {
+        return parseInt(item.id, 10)
+      })
+      .sort((a: number, b: number): number => {
+        return a - b
+      })
     const correctIngredientsLength = correctIngredientsIdArray.length
-    const differenceArray = IngredientsIdArray.filter((item: number, index: number) => {
-      return item === correctIngredientsIdArray[index]
-    })
+    const differenceArray = IngredientsIdArray
+    .filter((item: number, index: number) => {
+        return item === correctIngredientsIdArray[index]
+      })
+    const score = 30 // 1問正解すると30点追加
 
     if (differenceArray.length === correctIngredientsLength) {
       const wrapper = document.querySelector('.js-content-order-ingredients')
@@ -132,7 +134,7 @@ class TouchGame {
   private initActivePanels(): void {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
 
-    clickedPanels.forEach(item => {
+    clickedPanels.forEach((item) => {
       item.classList.remove('is-active')
     })
   }
