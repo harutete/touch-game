@@ -23,12 +23,26 @@ class TouchGame {
     this._timer = null
   }
   public init(): void {
+    const hdg = document.querySelector('.js-hdg-01') as HTMLElement
+    const isBound = 'is-bound'
+
     document.body.setAttribute('data-script-enabled', 'true')
+    this.appendClass(hdg, isBound)
     this._startBtn.addEventListener('click', () => {
+      this.removeClass(hdg, isBound)
       this.indicatePlayingScreen()
       this.setSelectedMenuContent()
     })
   }
+
+  private appendClass(elem: HTMLElement | Element, className: string): void {
+    elem.classList.add(className)
+  }
+
+  private removeClass(elem: HTMLElement | Element, className: string): void {
+    elem.classList.remove(className)
+  }
+
   private indicatePlayingScreen(): void {
     const playingScreen = document.querySelector('.js-content-playing-screen') as HTMLElement
     const beforeScreen = document.querySelector('.js-content-before-screen') as HTMLElement
@@ -133,7 +147,7 @@ class TouchGame {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
 
     clickedPanels.forEach(item => {
-      item.classList.remove('is-active')
+      this.removeClass(item, 'is-active')
     })
   }
 }
