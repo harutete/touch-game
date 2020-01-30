@@ -225,7 +225,7 @@ img {
     background: lighten($color-orange, 15%);
     border-radius: 50px;
     text-align: center;
-    padding: 10px;
+    padding: 10px 20px;
     &::before {
       content: '';
       position: absolute;
@@ -233,11 +233,12 @@ img {
   }
   &-balloon--left {
     &::before {
-      left: -15px;
       top: 50%;
+      left: -35px;
+      z-index: -1;
       transform: translateY(-50%);
-      border: 10px solid transparent {
-        right: 10px solid lighten($color-orange, 15%)
+      border: 20px solid transparent {
+        right: 40px solid lighten($color-orange, 15%)
       }
     }
   }
