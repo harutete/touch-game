@@ -11,8 +11,8 @@ class Timer {
     let timeLimitMs = this._limit
     this.timerId = (): void => {
       timeLimitMs = timeLimitMs - 1000
-      const formatLimit = Math.floor(timeLimitMs / 1000)
-      this._wrap.textContent = formatLimit.toString()
+      const limitSec = Math.floor(timeLimitMs / 1000)
+      this._wrap.textContent = limitSec.toString()
 
       setTimeout(() => {
         this.timerId()
