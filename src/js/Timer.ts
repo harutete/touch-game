@@ -1,7 +1,7 @@
 class Timer {
   private readonly _limit: number
   private _wrap: HTMLElement
-  private _timerId: null | any
+  private _timerId: any | null
   private _count: number
   constructor(wrap: HTMLElement, ms: number) {
     this._wrap = wrap
