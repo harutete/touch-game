@@ -1,7 +1,7 @@
 import '../sass/style.scss'
 import menuData = require('../json/menu.json')
 import ingredientsData = require('../json/ingredients.json')
-import shuffleArray from './shuffle'
+import ShuffleArray from './ShuffleArray'
 import Timer from './Timer'
 import AddScore from './AddScore'
 
@@ -60,7 +60,7 @@ class TouchGame {
   private setIngredientsPanel(): void {
     const outputElem = document.querySelector('.js-content-order-ingredients')
     const ingredients = ingredientsData
-    const shuffledIngredientsArray = shuffleArray(ingredients)
+    const shuffledIngredientsArray = new ShuffleArray().init(ingredients)
     let panelHtml = ''
 
     shuffledIngredientsArray.forEach(item => {
