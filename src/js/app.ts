@@ -61,6 +61,7 @@ class TouchGame {
     const menu = menuData
     this._selectedMenu = menu[Math.floor(Math.random() * menu.length)]
     const orderText = document.querySelector('.js-text-order')
+    const orderImg = document.querySelector('.js-img-order')
     const customerImage = document.querySelector('.js-img-customer')
     const customer = [
       '/src/image/img_boy_01.png',
@@ -68,10 +69,9 @@ class TouchGame {
       '/src/image/img_girl_01.png',
       '/src/image/img_girl_02.png',
     ]
-    const customerIndex = Math.floor(Math.random() * customer.length)
-    const orderImg = document.querySelector('.js-img-order')
+    const randomIndex = Math.floor(Math.random() * customer.length)
 
-    customerImage.setAttribute('src', customer[customerIndex])
+    customerImage.setAttribute('src', customer[randomIndex])
     orderText.textContent = this._selectedMenu.description
     orderImg.setAttribute('src', this._selectedMenu.image)
     orderImg.setAttribute('alt', this._selectedMenu.description)
@@ -119,11 +119,13 @@ class TouchGame {
       return
     }
 
-    const IngredientsIdArray: number[] = [...clickedPanels].map((elem) => {
-      return parseInt(elem.getAttribute('data-ingredients-id'), 10)
-    }).sort((a: number, b: number): number => {
-      return a - b
-    })
+    const IngredientsIdArray: number[] = [...clickedPanels]
+      .map((elem) => {
+        return parseInt(elem.getAttribute('data-ingredients-id'), 10)
+      })
+      .sort((a: number, b: number): number => {
+        return a - b
+      })
     const correctIngredientsIdArray: number[] = this._selectedMenu.ingredients
       .map((item:any) => {
         return parseInt(item.id, 10)
@@ -133,7 +135,7 @@ class TouchGame {
       })
     const correctIngredientsLength = correctIngredientsIdArray.length
     const differenceArray = IngredientsIdArray
-    .filter((item: number, index: number) => {
+      .filter((item: number, index: number) => {
         return item === correctIngredientsIdArray[index]
       })
     const score = 30 // 1問正解すると30点追加
