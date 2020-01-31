@@ -22,13 +22,28 @@ class TouchGame {
     this._count = 0
     this._timer = null
   }
+
   public init(): void {
+    const hdg = document.querySelector('.js-hdg-01')
+    const isBound = 'is-bound'
+
     document.body.setAttribute('data-script-enabled', 'true')
+    this.appendClass(hdg, isBound)
     this._startBtn.addEventListener('click', () => {
+      this.removeClass(hdg, isBound)
       this.indicatePlayingScreen()
       this.setSelectedMenuContent()
     })
   }
+
+  private appendClass(elem: HTMLElement | Element, className: string): void {
+    elem.classList.add(className)
+  }
+
+  private removeClass(elem: HTMLElement | Element, className: string): void {
+    elem.classList.remove(className)
+  }
+
   private indicatePlayingScreen(): void {
     const playingScreen = document.querySelector('.js-content-playing-screen') as HTMLElement
     const beforeScreen = document.querySelector('.js-content-before-screen') as HTMLElement
@@ -41,6 +56,7 @@ class TouchGame {
 
     this._timer.countdownTimer()
   }
+
   private setSelectedMenuContent(): void {
     const menu = menuData
     this._selectedMenu = menu[Math.floor(Math.random() * menu.length)]
@@ -62,6 +78,7 @@ class TouchGame {
 
     this.setIngredientsPanel()
   }
+
   private setIngredientsPanel(): void {
     const outputElem = document.querySelector('.js-content-order-ingredients')
     const ingredients = ingredientsData
@@ -75,6 +92,7 @@ class TouchGame {
     outputElem.insertAdjacentHTML("afterbegin", panelHtml)
     this.findPanelElem()
   }
+
   private findPanelElem():void {
     const panels = document.querySelectorAll('.js-panel-ingredients')
     const completeBtn = document.querySelector('.js-btn-complete')
@@ -87,11 +105,13 @@ class TouchGame {
       this.checkIngredientsCombination()
     })
   }
+
   private togglePanelClass(event: any):void {
     const clickedElemParent = event.target.closest('.js-panel-ingredients')
 
     clickedElemParent.classList.toggle('is-active')
   }
+
   private checkIngredientsCombination():void {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
     // クリックされた要素がなかったら処理を終了
@@ -121,21 +141,34 @@ class TouchGame {
     if (differenceArray.length === correctIngredientsLength) {
       const wrapper = document.querySelector('.js-content-order-ingredients')
       this._count++
-      const totalScore = new AddScore(score).appendScore(this._count)
-
+      const totalScore = new AddScore().appendScore(score, this._count)
       document.querySelector('.js-state-score').textContent = totalScore.toString()
+
+      this._timer.pauseCountdown(this.setPopup(document.querySelector('.js-content-popup'), 'is-correct'), 3000)
+
       wrapper.textContent = null
       this.setSelectedMenuContent()
     } else {
       this.initPanelsClass()
     }
   }
+
+  public setPopup(item: HTMLElement, className: string): void {
+    this.appendClass(item, className)
+
+    setTimeout(() => {
+      this.removeClass(item, className)
+    }, 3000);
+  }
+
   // 不正解だった場合にクラスを外すメソッド
   private initPanelsClass(): void {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
 
-    clickedPanels.forEach((item) => {
-      item.classList.remove('is-active')
+    this._timer.pauseCountdown(this.setPopup(document.querySelector('.js-content-popup'), 'is-incorrect'), 3000)
+
+    clickedPanels.forEach(item => {
+      this.removeClass(item, 'is-active')
     })
   }
 }

@@ -153,16 +153,55 @@ img {
       }
     }
   }
+  &-popup {
+    display: none;
+    opacity: 0;
+    transition: .2s ease;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: rgba($color-white, .8);
+    border-radius: 5px;
+    box-shadow: 0 0 10px 5px rgba($color-gray, .8);
+    padding: 15px;
+    &.is-correct {
+      display: block;
+      opacity: 1;
+      &::before {
+        content: '正解！';
+        color: $color-red;
+        font: {
+          size: 4rem;
+          weight: bold;
+        }
+      }
+    }
+    &.is-incorrect {
+      display: block;
+      opacity: 1;
+      &::before {
+        content: '不正解！';
+        color: $color-lblue;
+        font: {
+          size: 4rem;
+          weight: bold;
+        }
+      }
+    }
+  }
 }
 
 .hdg {
   &-01 {
-    animation: bound .5s ease .5s infinite alternate;
     font: {
       size: 5rem;
       weight: bold;
     }
     text-align: center;
+    &.is-bound {
+      animation: bound .5s ease .5s infinite alternate;
+    }
   }
   &-01__inner {
     display: inline-block;
@@ -236,7 +275,7 @@ img {
     background: lighten($color-orange, 15%);
     border-radius: 50px;
     text-align: center;
-    padding: 10px;
+    padding: 10px 20px;
     &::before {
       content: '';
       position: absolute;
@@ -244,11 +283,12 @@ img {
   }
   &-balloon--left {
     &::before {
-      left: -15px;
       top: 50%;
+      left: -35px;
+      z-index: -1;
       transform: translateY(-50%);
-      border: 10px solid transparent {
-        right: 10px solid lighten($color-orange, 15%)
+      border: 20px solid transparent {
+        right: 40px solid lighten($color-orange, 15%)
       }
     }
   }
