@@ -13,12 +13,14 @@ import AddScore from './AddScore'
 class TouchGame {
   private readonly _startBtn: HTMLButtonElement
   private _selectedMenu: { [key: string]: any } | null
+  private _totalScore: any
   private _count: number
   private _timer: any | null
 
   constructor() {
     this._startBtn = document.querySelector('.js-btn-start')
     this._selectedMenu = null
+    this._totalScore = new AddScore(document.querySelector('.js-state-score'))
     this._count = 0
     this._timer = null
   }
@@ -29,6 +31,7 @@ class TouchGame {
 
     document.body.setAttribute('data-script-enabled', 'true')
     this.appendClass(hdg, isBound)
+    this._totalScore.init()
     this._startBtn.addEventListener('click', () => {
       this.removeClass(hdg, isBound)
       this.indicatePlayingScreen()
@@ -142,10 +145,8 @@ class TouchGame {
 
     if (differenceArray.length === correctIngredientsLength) {
       const wrapper = document.querySelector('.js-content-order-ingredients')
-      this._count++
-      const totalScore = new AddScore().appendScore(score, this._count)
-      document.querySelector('.js-state-score').textContent = totalScore.toString()
 
+      this._totalScore.appendScore(score)
       this._timer.pauseCountdown(this.setPopup(document.querySelector('.js-content-popup'), 'is-correct'), 3000)
 
       wrapper.textContent = null
