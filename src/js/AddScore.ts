@@ -17,6 +17,8 @@ class AddScore {
 
   public appendScore(score: number): void {
     this._totalScore = score * this._count
+    this._wrap.textContent = this._totalScore.toString()
+
     this._count++
   }
 }
