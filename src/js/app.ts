@@ -147,7 +147,10 @@ class TouchGame {
       const wrapper = document.querySelector('.js-content-order-ingredients')
 
       this._totalScore.appendScore(score)
-      this._timer.pauseCountdown(this.setPopup(document.querySelector('.js-content-popup'), 'is-correct'), 3000)
+      this._timer.pauseCountdown(
+        this.setPopup(document.querySelector('.js-content-popup'), 'is-correct'),
+        3000
+      )
 
       wrapper.textContent = null
       this.setSelectedMenuContent()
@@ -161,14 +164,17 @@ class TouchGame {
 
     setTimeout(() => {
       this.removeClass(item, className)
-    }, 3000);
+    }, 2000);
   }
 
   // 不正解だった場合にクラスを外すメソッド
   private initPanelsClass(): void {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
 
-    this._timer.pauseCountdown(this.setPopup(document.querySelector('.js-content-popup'), 'is-incorrect'), 3000)
+    this._timer.pauseCountdown(
+      this.setPopup(document.querySelector('.js-content-popup'), 'is-incorrect'),
+      2000
+    )
 
     clickedPanels.forEach(item => {
       this.removeClass(item, 'is-active')
