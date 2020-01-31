@@ -28,6 +28,16 @@ img {
   max-width: 100%;
 }
 
+// animation
+@keyframes bound {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
 .content {
   &-wrapper {
     padding: 10px;
@@ -147,6 +157,7 @@ img {
 
 .hdg {
   &-01 {
+    animation: bound .5s ease .5s infinite alternate;
     font: {
       size: 5rem;
       weight: bold;

@@ -127,11 +127,11 @@ class TouchGame {
       wrapper.textContent = null
       this.setSelectedMenuContent()
     } else {
-      this.initActivePanels()
+      this.initPanelsClass()
     }
   }
   // 不正解だった場合にクラスを外すメソッド
-  private initActivePanels(): void {
+  private initPanelsClass(): void {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
 
     clickedPanels.forEach((item) => {
