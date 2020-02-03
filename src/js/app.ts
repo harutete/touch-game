@@ -34,13 +34,18 @@ class TouchGame {
     const isScreenVertical = checkDeviceAndOrientation.checkDeviceOrientation()
 
     document.body.setAttribute('data-script-enabled', 'true')
-    this.appendClass(hdg, isBound)
-    this._totalScore.init()
-    this._startBtn.addEventListener('click', () => {
-      this.removeClass(hdg, isBound)
-      this.indicatePlayingScreen()
-      this.setSelectedMenuContent()
-    })
+
+    if (isScreenVertical) {
+      this.appendClass(document.querySelector('.js-content-disabled'), 'is-disabled')
+    } else {
+      this.appendClass(hdg, isBound)
+    }
+      this._totalScore.init()
+      this._startBtn.addEventListener('click', () => {
+        this.removeClass(hdg, isBound)
+        this.indicatePlayingScreen()
+        this.setSelectedMenuContent()
+      })
   }
 
   private appendClass(elem: HTMLElement | Element, className: string): void {
@@ -163,7 +168,7 @@ class TouchGame {
     }
   }
 
-  public setPopup(item: HTMLElement, className: string): void {
+  private setPopup(item: HTMLElement, className: string): void {
     this.appendClass(item, className)
 
     setTimeout(() => {
