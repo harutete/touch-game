@@ -1,4 +1,4 @@
-class Timer {
+export default class Timer {
   private readonly _limit: number
   private _wrap: HTMLElement
   private _timerId: any | null
@@ -41,5 +41,3 @@ class Timer {
     })
   }
 }
-
-export default Timer

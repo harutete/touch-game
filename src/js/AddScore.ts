@@ -1,4 +1,4 @@
-class AddScore {
+export default class AddScore {
   private _wrap: HTMLElement | Element
   private _totalScore: number | null
   private _count: number
@@ -22,5 +22,3 @@ class AddScore {
     this._count++
   }
 }
-
-export default AddScore

@@ -1,4 +1,4 @@
-class shuffleArray {
+export default class ShuffleArray {
   constructor() {
   }
   public init(arr: { [key: string]: any }[]): { [key: string]: any }[] {
@@ -15,4 +15,3 @@ class shuffleArray {
       return array
   }
 }
-export default shuffleArray

@@ -180,6 +180,8 @@ class TouchGame {
       this.removeClass(item, 'is-active')
     })
   }
+
+  // スマホが縦向きの時に横で遊んでくださいとアラート出す
 }
 
 new TouchGame().init()
