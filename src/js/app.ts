@@ -6,6 +6,7 @@ import menuData = require('../json/menu.json')
 import ingredientsData = require('../json/ingredients.json')
 
 // method
+import CheckUserDevice from './CheckUserDevice'
 import ShuffleArray from './ShuffleArray'
 import Timer from './Timer'
 import AddScore from './AddScore'
@@ -28,6 +29,9 @@ class TouchGame {
   public init(): void {
     const hdg = document.querySelector('.js-hdg-01')
     const isBound = 'is-bound'
+    const checkUserDevice = new CheckUserDevice()
+    const isSp = checkUserDevice.checkIsMobile()
+    const isScreenVertical = checkUserDevice.checkDeviceOrientation()
 
     document.body.setAttribute('data-script-enabled', 'true')
     this.appendClass(hdg, isBound)
