@@ -21,6 +21,7 @@ export default class CheckDeviceAndOrientation {
   }
   // スマホの場合画面が縦向きか横向きか判定する
   public checkDeviceOrientation(): boolean {
+    this.checkIsMobile()
     // 閲覧している端末がスマホでない場合は処理を終了させる
     if (!this.isMobile) {
       return

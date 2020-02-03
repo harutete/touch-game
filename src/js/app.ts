@@ -30,7 +30,6 @@ class TouchGame {
     const hdg = document.querySelector('.js-hdg-01')
     const isBound = 'is-bound'
     const checkDeviceAndOrientation = new CheckDeviceAndOrientation()
-    const isSp = checkDeviceAndOrientation.checkIsMobile()
     const isScreenVertical = checkDeviceAndOrientation.checkDeviceOrientation()
 
     document.body.setAttribute('data-script-enabled', 'true')
