@@ -1,4 +1,4 @@
-export default class CheckUserDevice {
+export default class CheckDeviceAndOrientation {
   private isMobile: boolean
   constructor() {
     this.isMobile
