@@ -6,7 +6,6 @@ export default class CheckDeviceAndOrientation {
   // スマホかどうか判断する
   public checkIsMobile(): boolean {
     const ua: string = window.navigator.userAgent.toLowerCase()
-    console.log('ua: ', ua);
 
     // TODO ユーザーエージェント考慮する
     if (
