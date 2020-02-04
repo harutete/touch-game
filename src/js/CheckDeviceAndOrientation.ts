@@ -1,7 +1,7 @@
 export default class CheckDeviceAndOrientation {
   private isMobile: boolean
   constructor() {
-    this.isMobile
+    this.isMobile = false
   }
   // スマホかどうか判断する
   public checkIsMobile(): boolean {
