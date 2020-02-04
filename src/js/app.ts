@@ -10,6 +10,7 @@ import CheckDeviceAndOrientation from './CheckDeviceAndOrientation'
 import ShuffleArray from './ShuffleArray'
 import Timer from './Timer'
 import AddScore from './AddScore'
+import { resolve } from 'dns';
 
 class TouchGame {
   private readonly _startBtn: HTMLButtonElement
@@ -17,6 +18,7 @@ class TouchGame {
   private _totalScore: any
   private _count: number
   private _timer: any | null
+  private _checkDeviceAndOrientation: any
 
   constructor() {
     this._startBtn = document.querySelector('.js-btn-start')
@@ -24,13 +26,13 @@ class TouchGame {
     this._totalScore = new AddScore(document.querySelector('.js-state-score'))
     this._count = 0
     this._timer = null
+    this._checkDeviceAndOrientation = new CheckDeviceAndOrientation()
   }
 
   public init(): void {
     const hdg = document.querySelector('.js-hdg-01')
     const isBound = 'is-bound'
-    const checkDeviceAndOrientation = new CheckDeviceAndOrientation()
-    const isScreenVertical = checkDeviceAndOrientation.checkDeviceOrientation()
+    const isScreenVertical = this._checkDeviceAndOrientation.checkDeviceOrientation()
 
     document.body.setAttribute('data-script-enabled', 'true')
 
@@ -38,13 +40,35 @@ class TouchGame {
       this.appendClass(document.querySelector('.js-content-disabled'), 'is-disabled')
     } else {
       this.appendClass(hdg, isBound)
-    }
-      this._totalScore.init()
       this._startBtn.addEventListener('click', () => {
         this.removeClass(hdg, isBound)
         this.indicatePlayingScreen()
+        this._totalScore.init()
         this.setSelectedMenuContent()
       })
+    }
+
+    // orientationchangeイベントが頻発した場合の為に、イベントを間引く
+    window.addEventListener('orientationchange', () => {
+      setTimeout(() => {
+        this.checkOrientation()
+      }, 500);
+    })
+  }
+
+  // スマホの向きを変えたときに縦向きか横向きか判定して処理を変える
+  private checkOrientation() {
+    const disabledContent = document.querySelector('.js-content-disabled')
+    const isScreenVertical = this._checkDeviceAndOrientation.checkDeviceOrientation()
+
+    if (isScreenVertical) {
+      this.appendClass(disabledContent, 'is-disabled')
+    } else if (
+      !isScreenVertical &&
+      disabledContent.classList.contains('is-disabled')
+    ) {
+      this.removeClass(disabledContent, 'is-disabled')
+    }
   }
 
   private appendClass(elem: HTMLElement | Element, className: string): void {
