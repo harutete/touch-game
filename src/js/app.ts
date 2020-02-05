@@ -11,11 +11,11 @@ import ShuffleArray from './ShuffleArray'
 import Timer from './Timer'
 import AddScore from './AddScore'
 import { appendClass, removeClass } from './utils'
+
 class TouchGame {
   private readonly _startBtn: HTMLButtonElement
   private _selectedMenu: { [key: string]: any } | null
   private _totalScore: any
-  private _count: number
   private _timer: any | null
   private _checkDeviceAndOrientation: any
 
@@ -23,7 +23,6 @@ class TouchGame {
     this._startBtn = document.querySelector('.js-btn-start')
     this._selectedMenu = null
     this._totalScore = new AddScore(document.querySelector('.js-state-score'))
-    this._count = 0
     this._timer = null
     this._checkDeviceAndOrientation = new CheckDeviceAndOrientation()
   }
