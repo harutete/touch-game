@@ -10,8 +10,7 @@ import CheckDeviceAndOrientation from './CheckDeviceAndOrientation'
 import ShuffleArray from './ShuffleArray'
 import Timer from './Timer'
 import AddScore from './AddScore'
-import { resolve } from 'dns';
-
+import { appendClass, removeClass } from './utils'
 class TouchGame {
   private readonly _startBtn: HTMLButtonElement
   private _selectedMenu: { [key: string]: any } | null
@@ -37,11 +36,11 @@ class TouchGame {
     document.body.setAttribute('data-script-enabled', 'true')
 
     if (isScreenVertical) {
-      this.appendClass(document.querySelector('.js-content-disabled'), 'is-disabled')
+      appendClass(document.querySelector('.js-content-disabled'), 'is-disabled')
     } else {
-      this.appendClass(hdg, isBound)
+      appendClass(hdg, isBound)
       this._startBtn.addEventListener('click', () => {
-        this.removeClass(hdg, isBound)
+        removeClass(hdg, isBound)
         this.indicatePlayingScreen()
         this._totalScore.init()
         this.setSelectedMenuContent()
@@ -62,22 +61,15 @@ class TouchGame {
     const isScreenVertical = this._checkDeviceAndOrientation.checkDeviceOrientation()
 
     if (isScreenVertical) {
-      this.appendClass(disabledContent, 'is-disabled')
+      appendClass(disabledContent, 'is-disabled')
     } else if (
       !isScreenVertical &&
       disabledContent.classList.contains('is-disabled')
     ) {
-      this.removeClass(disabledContent, 'is-disabled')
+      removeClass(disabledContent, 'is-disabled')
     }
   }
 
-  private appendClass(elem: HTMLElement | Element, className: string): void {
-    elem.classList.add(className)
-  }
-
-  private removeClass(elem: HTMLElement | Element, className: string): void {
-    elem.classList.remove(className)
-  }
 
   private indicatePlayingScreen(): void {
     const playingScreen = document.querySelector('.js-content-playing-screen') as HTMLElement
@@ -192,10 +184,10 @@ class TouchGame {
   }
 
   private setPopup(item: HTMLElement, className: string): void {
-    this.appendClass(item, className)
+    appendClass(item, className)
 
     setTimeout(() => {
-      this.removeClass(item, className)
+      removeClass(item, className)
     }, 2000);
   }
 
@@ -209,7 +201,7 @@ class TouchGame {
     )
 
     clickedPanels.forEach(item => {
-      this.removeClass(item, 'is-active')
+      removeClass(item, 'is-active')
     })
   }
 
