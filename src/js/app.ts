@@ -10,7 +10,12 @@ import CheckDeviceAndOrientation from './CheckDeviceAndOrientation'
 import ShuffleArray from './ShuffleArray'
 import Timer from './Timer'
 import AddScore from './AddScore'
-import { appendClass, removeClass } from './utils'
+import {
+  appendClass,
+  removeClass,
+  toggleClass,
+  throttleEvent
+} from './utils'
 
 class TouchGame {
   private readonly _startBtn: HTMLButtonElement
@@ -30,7 +35,7 @@ class TouchGame {
   public init(): void {
     const hdg = document.querySelector('.js-hdg-01')
     const isBound = 'is-bound'
-    const isScreenVertical = this._checkDeviceAndOrientation.checkDeviceOrientation()
+    const isScreenVertical: boolean = this._checkDeviceAndOrientation.checkDeviceOrientation()
 
     document.body.setAttribute('data-script-enabled', 'true')
 
@@ -48,16 +53,14 @@ class TouchGame {
 
     // orientationchangeイベントが頻発した場合の為に、イベントを間引く
     window.addEventListener('orientationchange', () => {
-      setTimeout(() => {
-        this.checkOrientation()
-      }, 500);
+      throttleEvent(this.checkOrientation.bind(this), 256) // 16フレーム
     })
   }
 
   // スマホの向きを変えたときに縦向きか横向きか判定して処理を変える
   private checkOrientation() {
     const disabledContent = document.querySelector('.js-content-disabled')
-    const isScreenVertical = this._checkDeviceAndOrientation.checkDeviceOrientation()
+    const isScreenVertical: boolean = this._checkDeviceAndOrientation.checkDeviceOrientation()
 
     if (isScreenVertical) {
       appendClass(disabledContent, 'is-disabled')
@@ -66,9 +69,9 @@ class TouchGame {
       disabledContent.classList.contains('is-disabled')
     ) {
       removeClass(disabledContent, 'is-disabled')
+      appendClass(document.querySelector('.js-hdg-01'), 'is-bound')
     }
   }
-
 
   private indicatePlayingScreen(): void {
     const playingScreen = document.querySelector('.js-content-playing-screen') as HTMLElement
@@ -135,7 +138,7 @@ class TouchGame {
   private togglePanelClass(event: any):void {
     const clickedElemParent = event.target.closest('.js-panel-ingredients')
 
-    clickedElemParent.classList.toggle('is-active')
+    toggleClass(clickedElemParent, 'is-active')
   }
 
   private checkIngredientsCombination():void {
@@ -203,8 +206,6 @@ class TouchGame {
       removeClass(item, 'is-active')
     })
   }
-
-  // スマホが縦向きの時に横で遊んでくださいとアラート出す
 }
 
 new TouchGame().init()
