@@ -58,7 +58,7 @@ class TouchGame {
   }
 
   // スマホの向きを変えたときに縦向きか横向きか判定して処理を変える
-  private checkOrientation() {
+  private checkOrientation(): void {
     const disabledContent = document.querySelector('.js-content-disabled')
     const isScreenVertical: boolean = this._checkDeviceAndOrientation.checkDeviceOrientation()
 
@@ -114,15 +114,20 @@ class TouchGame {
     const shuffledIngredientsArray = new ShuffleArray().init(ingredients)
     let panelHtml = ''
 
-    shuffledIngredientsArray.forEach(item => {
-      panelHtml += `<div data-ingredients-id=${item.id} class="js-panel-ingredients panel-ingredients"><span class="panel-ingredients-inner"><img src="${item.image}" class="js-panel-ingredients-img"></span></div>`
-    })
+    shuffledIngredientsArray.forEach((item) =>
+      panelHtml +=
+        `<div data-ingredients-id=${item.id} class="js-panel-ingredients panel-ingredients">
+          <span class="panel-ingredients-inner">
+            <img src="${item.image}" class="js-panel-ingredients-img">
+          </span>
+        </div>`
+    )
 
     outputElem.insertAdjacentHTML("afterbegin", panelHtml)
     this.findPanelElem()
   }
 
-  private findPanelElem():void {
+  private findPanelElem(): void {
     const panels = document.querySelectorAll('.js-panel-ingredients')
     const completeBtn = document.querySelector('.js-btn-complete')
 
@@ -135,7 +140,7 @@ class TouchGame {
     })
   }
 
-  private togglePanelClass(event: any):void {
+  private togglePanelClass(event: any): void {
     const clickedElemParent = event.target.closest('.js-panel-ingredients')
 
     toggleClass(clickedElemParent, 'is-active')
@@ -156,18 +161,18 @@ class TouchGame {
         return a - b
       })
     const correctIngredientsIdArray: number[] = this._selectedMenu.ingredients
-      .map((item:any) => {
+      .map((item: { [key: string]: string }) => {
         return parseInt(item.id, 10)
       })
       .sort((a: number, b: number): number => {
         return a - b
       })
     const correctIngredientsLength = correctIngredientsIdArray.length
-    const differenceArray = IngredientsIdArray
+    const differenceArray: number[] = IngredientsIdArray
       .filter((item: number, index: number) => {
         return item === correctIngredientsIdArray[index]
       })
-    const score = 30 // 1問正解すると30点追加
+    const score = 30 // 1問正解するごとに30点追加
 
     if (differenceArray.length === correctIngredientsLength) {
       const wrapper = document.querySelector('.js-content-order-ingredients')
@@ -188,9 +193,7 @@ class TouchGame {
   private setPopup(item: HTMLElement, className: string): void {
     appendClass(item, className)
 
-    setTimeout(() => {
-      removeClass(item, className)
-    }, 2000);
+    setTimeout(() => removeClass(item, className), 2000)
   }
 
   // 不正解だった場合にクラスを外すメソッド
@@ -202,7 +205,7 @@ class TouchGame {
       2000
     )
 
-    clickedPanels.forEach(item => {
+    clickedPanels.forEach((item) => {
       removeClass(item, 'is-active')
     })
   }

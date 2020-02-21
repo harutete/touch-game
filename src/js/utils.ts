@@ -27,7 +27,7 @@ export function toggleClass(
 export function throttleEvent(
   callback: () => void,
   intervalMsec: number
-) {
+): void {
   const debounceDelay = 16
   let time = Date.now()
   let debounceTimer: any //TODO 型指定する
