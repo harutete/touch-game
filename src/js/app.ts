@@ -83,8 +83,7 @@ class TouchGame {
     playingScreen.style.display = 'block'
     beforeScreen.style.display = 'none'
 
-    await this._timer.countdownTimer()
-    console.log('owari')
+    this._timer.countdown()
   }
 
   private setSelectedMenuContent(): void {

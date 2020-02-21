@@ -13,27 +13,22 @@ export default class Timer {
     this._count = 0
   }
 
-  private countdownTimer(): Promise<void> {
-    return new Promise((resolve) => {
-      let limitMs = 3000 - (1000 * this._count)
-      const limitSec = Math.floor(limitMs / 1000)
-      this._wrap.textContent = limitSec.toString()
-      this._count++
-      this._timerId = setTimeout(() => this.countdownTimer(), 1000)
-      let limitMs = 0
-      console.log(limitMs)
-      if (limitMs <= 0) {
-        clearTimeout(this._timerId)
-        this._count = 0
-        resolve()
-      }
-    })
+  private countdownTimer(): any {
+    let limitMsec = this._limit - (1000 * this._count)
+    const limitSec = Math.floor(limitMsec / 1000)
+    this._wrap.textContent = limitSec.toString()
+    this._count++
+    this._timerId = setTimeout(() => this.countdownTimer(), 1000)
+
+    if (limitMsec <= 0) {
+      clearTimeout(this._timerId)
+      this._count = 0
+    }
   }
 
-  // public countdownTimerPlus() {
-
-
-  // }
+  public countdown(): void {
+    this.countdownTimer()
+  }
 
   // タイマーを一時的に止める
   public pauseCountdown(method: any, ms: number): void {
