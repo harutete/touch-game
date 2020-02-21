@@ -8,31 +8,37 @@
       {
         "id": 1,
         "name": "salt",
+        "description": "しお",
         "image": "/src/image/img_salt_01.png"
       },
       {
         "id": 4,
         "name": "noodle",
+        "description": "めん",
         "image": "/src/image/img_noodle_01.png"
       },
       {
         "id": 5,
         "name": "egg",
+        "description": "たまご",
         "image": "/src/image/img_egg_01.png"
       },
       {
         "id": 7,
         "name": "white_onion",
+        "description": "白ねぎ",
         "image": "/src/image/img_onion_01.png"
       },
       {
         "id": 8,
         "name": "menma",
+        "description": "めんま",
         "image": "/src/image/img_menma_01.png"
       },
       {
         "id": 9,
         "name": "roasted_pork",
+        "description": "チャーシュー",
         "image": "/src/image/img_roasted_pork_01.png"
       }
     ]
@@ -46,31 +52,37 @@
       {
         "id": 2,
         "name": "say_sauce",
+        "description": "しょうゆ",
         "image": "/src/image/img_soy_sauce_01.png"
       },
       {
         "id": 4,
         "name": "noodle",
+        "description": "めん",
         "image": "/src/image/img_noodle_01.png"
       },
       {
         "id": 5,
         "name": "egg",
+        "description": "たまご",
         "image": "/src/image/img_egg_01.png"
       },
       {
         "id": 7,
         "name": "white_onion",
+        "description": "白ねぎ",
         "image": "/src/image/img_onion_01.png"
       },
       {
         "id": 9,
         "name": "roasted_pork",
+        "description": "チャーシュー",
         "image": "/src/image/img_roasted_pork_01.png"
       },
       {
         "id": 11,
         "name": "seaweed",
+        "description": "のり",
         "image": "/src/image/img_seaweed_01.png"
       }
     ]
@@ -84,31 +96,37 @@
       {
         "id": 3,
         "name": "pork_born",
+        "description": "とんこつ",
         "image": "/src/image/img_pork_born_01.png"
       },
       {
         "id": 4,
         "name": "noodle",
+        "description": "めん",
         "image": "/src/image/img_noodle_01.png"
       },
       {
         "id": 6,
         "name": "green_onion",
+        "description": "ねぎ",
         "image": "/src/image/img_green_onion_01.png"
       },
       {
         "id": 9,
         "name": "roasted_pork",
+        "description": "チャーシュー",
         "image": "/src/image/img_roasted_pork_01.png"
       },
       {
         "id": 10,
         "name": "red_ginger",
+        "description": "紅しょうが",
         "image": "/src/image/img_red_ginger_01.png"
       },
       {
         "id": 12,
         "name": "kikurage",
+        "description": "きくらげ",
         "image": "/src/image/img_kikurage_01.png"
       }
     ]
@@ -122,26 +140,31 @@
       {
         "id": 2,
         "name": "say_sauce",
+        "description": "しょうゆ",
         "image": "/src/image/img_soy_sauce_01.png"
       },
       {
         "id": 4,
         "name": "noodle",
+        "description": "めん",
         "image": "/src/image/img_noodle_01.png"
       },
       {
         "id": 7,
         "name": "white_onion",
+        "description": "白ねぎ",
         "image": "/src/image/img_onion_01.png"
       },
       {
         "id": 9,
         "name": "roasted_pork",
+        "description": "チャーシュー",
         "image": "/src/image/img_roasted_pork_01.png"
       },
       {
         "id": 11,
         "name": "seaweed",
+        "description": "のり",
         "image": "/src/image/img_seaweed_01.png"
       }
     ]

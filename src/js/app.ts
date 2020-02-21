@@ -106,6 +106,22 @@ class TouchGame {
     orderImg.setAttribute('alt', this._selectedMenu.description)
 
     this.setIngredientsPanel()
+    this.setIngredientsList()
+  }
+
+  private setIngredientsList(): void {
+    const outputElem = document.querySelector('.js-content-necessary-ingredients')
+    const ul = document.createElement('ul')
+
+    this._selectedMenu.ingredients
+      .forEach((item: { [key: string]: any }) => {
+        const li = document.createElement('li')
+
+        li.textContent = item.description
+        ul.insertAdjacentElement('beforeend', li)
+      })
+
+    outputElem.insertAdjacentElement('beforeend', ul)
   }
 
   private setIngredientsPanel(): void {
@@ -123,7 +139,7 @@ class TouchGame {
         </div>`
     )
 
-    outputElem.insertAdjacentHTML("afterbegin", panelHtml)
+    outputElem.insertAdjacentHTML('beforeend', panelHtml)
     this.findPanelElem()
   }
 
