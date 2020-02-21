@@ -154,19 +154,19 @@ class TouchGame {
     }
 
     const IngredientsIdArray: number[] = [...clickedPanels]
-      .map((elem) => {
-        return parseInt(elem.getAttribute('data-ingredients-id'), 10)
-      })
-      .sort((a: number, b: number): number => {
-        return a - b
-      })
+      .map((elem) =>
+        parseInt(elem.getAttribute('data-ingredients-id'), 10)
+      )
+      .sort((a: number, b: number): number =>
+        a - b
+      )
     const correctIngredientsIdArray: number[] = this._selectedMenu.ingredients
-      .map((item: { [key: string]: string }) => {
-        return parseInt(item.id, 10)
-      })
-      .sort((a: number, b: number): number => {
-        return a - b
-      })
+      .map((item: { [key: string]: string }) =>
+        parseInt(item.id, 10)
+      )
+      .sort((a: number, b: number): number =>
+        a - b
+      )
     const correctIngredientsLength = correctIngredientsIdArray.length
     const differenceArray: number[] = IngredientsIdArray
       .filter((item: number, index: number) => {
