@@ -46,6 +46,9 @@ img {
     width: 850px;
     margin: auto;
     padding: 10px 0 30px;
+    @media screen and (max-width: 959px) {
+      width: 80%;
+    }
   }
   &-disabled {
     display: none;
@@ -87,12 +90,16 @@ img {
   }
   &-playing-state {
     display: flex;
-    padding-left: -15px;
+    flex-wrap: wrap;
+    margin: -15px 0 0 -15px;
   }
   &-playing-state__item {
     color: $color-white;
     width: 50%;
-    padding-left: 15px;
+    padding: 15px 0 0 15px;
+    @media screen and (max-width: 559px) {
+      width: 100%;
+    }
   }
   &-playing-score {
     display: flex;
@@ -112,11 +119,19 @@ img {
   }
   &-customer {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     margin: 20px -20px 0 0;
     & > div {
       margin-right: 20px;
+    }
+    @media screen and (max-width: 559px) {
+      flex-direction: column;
+      margin: 0;
+      & > div {
+        margin: 20px 0 0;
+      }
     }
   }
   &-customer-img {
@@ -124,17 +139,27 @@ img {
     border: 1px solid $color-orange {
       radius: 50%;
     }
+    text-align: center;
     width: 150px;
     height: 150px;
     padding: 10px;
+    @media screen and (max-width: 559px) {
+      width: 200px;
+      height: 200px;
+    }
   }
   &-customer-order-img {
     background: lighten($color-orange, 20%);
     border-radius: 50%;
+    text-align: center;
     width: 150px;
     height: 150px;
     margin-right: 20px;
     padding: 10px;
+    @media screen and (max-width: 559px) {
+      width: 200px;
+      height: 200px;
+    }
   }
   &-order-ingredients {
     display: flex;
@@ -280,23 +305,26 @@ img {
       weight: bold;
     }
   }
-  &-state-score-wrap {
+  &-state-wrap {
     font: {
       size: 2.5rem;
       weight: bold;
     }
-  }
-  &-state-score {
-    font-size: 3.5rem;
-  }
-  &-state-time-wrap {
-    font: {
-      size: 2.5rem;
-      weight: bold;
+    @media screen and (max-width: 959px) {
+      font-size: calc(25vw * 100 / 959);
+    }
+    @media screen and (max-width: 559px) {
+      font-size: 1.5rem;
     }
   }
-  &-state-time {
+  &-state {
     font-size: 3.5rem;
+    @media screen and (max-width: 959px) {
+      font-size: calc(35vw * 100 / 959);
+    }
+    @media screen and (max-width: 559px) {
+      font-size: 2rem;
+    }
   }
   &-balloon {
     position: relative;
@@ -308,8 +336,6 @@ img {
       content: '';
       position: absolute;
     }
-  }
-  &-balloon--left {
     &::before {
       top: 50%;
       left: -35px;
@@ -317,6 +343,16 @@ img {
       transform: translateY(-50%);
       border: 20px solid transparent {
         right: 40px solid lighten($color-orange, 15%)
+      }
+    }
+    @media screen and (max-width: 559px) {
+      &::before {
+        top: -35px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 20px solid transparent {
+          bottom: 40px solid lighten($color-orange, 15%)
+        }
       }
     }
   }
