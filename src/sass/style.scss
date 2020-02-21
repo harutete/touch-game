@@ -38,6 +38,7 @@ img {
   }
 }
 
+// contents
 .content {
   &-wrapper {
     position: relative;
@@ -283,6 +284,7 @@ img {
   }
 }
 
+// title
 .hdg {
   &-01 {
     font: {
@@ -323,6 +325,25 @@ img {
       z-index: 2;
       color: darken($color-red, 20%);
       text-shadow: 2px 2px $color-white;
+    }
+  }
+  &-02 {
+    font-weight: normal;
+    &::before,
+    &::after {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      background: $color-lblue;
+      border-radius: 10px;
+      width: 10px;
+      height: 10px;
+    }
+    &::before {
+      margin-right: 15px;
+    }
+    &::after {
+      margin-left: 15px;
     }
   }
 }
