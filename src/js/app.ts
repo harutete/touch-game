@@ -140,13 +140,13 @@ class TouchGame {
     })
   }
 
-  private togglePanelClass(event: any): void {
+  private togglePanelClass(event: { [key: string]: any }): void {
     const clickedElemParent = event.target.closest('.js-panel-ingredients')
 
     toggleClass(clickedElemParent, 'is-active')
   }
 
-  private checkIngredientsCombination():void {
+  private checkIngredientsCombination(): void {
     const clickedPanels = document.querySelectorAll('.js-panel-ingredients.is-active')
     // クリックされた要素がなかったら処理を終了
     if (!clickedPanels.length) {
