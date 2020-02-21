@@ -8,47 +8,59 @@
 </head>
 <body>
   <div class="content-wrapper">
-    <h1 class="hdg-01 js-hdg-01"><span data-text="Touch Game" class="hdg-01__inner">Touch Game</span></h1>
-    <div class="js-content-before-screen content-before-screen">
-      <div class="js-content-disabled content-disabled">
-        <div class="content-disabled__inner">
-          <p>画面を横向きにしてプレイしてください。</p>
-        </div>
-      </div>
-      <p>ラーメンを作ろう</p>
-      <button class="js-btn-start btn-start" type="button">はじめる</button>
-    </div>
-    <div class="js-content-playing-screen content-playing-screen">
-      <div class="content-playing-state">
-        <div class="content-playing-state__item">
-          <div class="content-playing-score">
-            <p class="text-state-topic">スコア</p>
-            <div class="text-state-score-wrap"><span class="js-state-score text-state-score"></span>点</div>
+    <div class="content-inner">
+      <h1 class="js-hdg-01 hdg-01">
+        <span data-text="Touch Game" class="hdg-01__inner">Touch Game</span>
+      </h1>
+      <div class="js-content-before-screen content-before-screen">
+        <div class="js-content-disabled content-disabled">
+          <div class="content-disabled__inner">
+            <p>画面を横向きにしてプレイしてください。</p>
           </div>
         </div>
-        <div class="content-playing-state__item">
-          <div class="content-playing-time">
-            <p class="text-state-topic">残り時間</p>
-            <div class="text-state-time-wrap"><span class="js-state-time text-state-time"></span>秒</div>
+        <p>ラーメンを作ろう</p>
+        <button class="js-btn-start btn-start" type="button">はじめる</button>
+      </div>
+      <div class="js-content-playing-screen content-playing-screen">
+        <div class="content-playing-state">
+          <div class="content-playing-state__item">
+            <div class="content-playing-score">
+              <p class="text-state-topic">スコア</p>
+              <div class="text-state-score-wrap">
+                <span class="js-state-score text-state-score"></span>点
+              </div>
+            </div>
+          </div>
+          <div class="content-playing-state__item">
+            <div class="content-playing-time">
+              <p class="text-state-topic">残り時間</p>
+              <div class="text-state-time-wrap">
+                <span class="js-state-time text-state-time"></span>秒
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="content-customer">
-        <div class="content-customer-img">
-          <img src="" alt="" class="js-img-customer">
+        <div class="content-customer">
+          <div class="content-customer-img">
+            <img src="" alt="" class="js-img-customer">
+          </div>
+          <div class="content-customer-text">
+            <p class="text-balloon text-balloon--left">
+              <span class="js-text-order text-order"></span>が食べたい
+            </p>
+          </div>
+          <div class="content-customer-order-img">
+            <img src="" alt="" class="js-img-order">
+          </div>
         </div>
-        <div class="content-customer-text">
-          <p class="text-balloon text-balloon--left"><span class="js-text-order text-order"></span>が食べたい</p>
+        <div class="content-order">
+          <div class="js-content-order-ingredients content-order-ingredients"></div>
+          <p class="text-center">
+            <button class="js-btn-complete btn-complete" type="button">完成！</button>
+          </p>
         </div>
-        <div class="content-customer-order-img">
-          <img src="" alt="" class="js-img-order">
-        </div>
+        <div class="js-content-popup content-popup"></div>
       </div>
-      <div class="content-order">
-        <div class="js-content-order-ingredients content-order-ingredients"></div>
-        <p class="text-center"><button class="js-btn-complete btn-complete" type="button">完成！</button></p>
-      </div>
-      <div class="js-content-popup content-popup"></div>
     </div>
   </div>
   <script src="./dist/master.js"></script>

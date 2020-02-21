@@ -41,7 +41,11 @@ img {
 .content {
   &-wrapper {
     position: relative;
-    padding: 10px;
+  }
+  &-inner {
+    width: 850px;
+    margin: auto;
+    padding: 10px 0 30px;
   }
   &-disabled {
     display: none;
