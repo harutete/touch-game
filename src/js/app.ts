@@ -76,14 +76,15 @@ class TouchGame {
   private async indicatePlayingScreen(): Promise<void> {
     const playingScreen = document.querySelector('.js-content-playing-screen') as HTMLElement
     const beforeScreen = document.querySelector('.js-content-before-screen') as HTMLElement
-    const limit = 1000 * 3 // 3分
+    const limit = 1000 * 60 * 3 // 3分
     this._timer = new Timer(document.querySelector('.js-state-time'), limit)
 
     this._startBtn.style.display = 'none'
     playingScreen.style.display = 'block'
     beforeScreen.style.display = 'none'
 
-    this._timer.countdown()
+    await this._timer.countdownTimer()
+    console.log('hoge')
   }
 
   private setSelectedMenuContent(): void {

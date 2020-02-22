@@ -1,4 +1,5 @@
 import { promises } from "dns";
+import { resolve } from "url";
 
 export default class Timer {
   private readonly _limit: number
@@ -13,21 +14,24 @@ export default class Timer {
     this._count = 0
   }
 
-  private countdownTimer(): any {
-    let limitMsec = this._limit - (1000 * this._count)
-    const limitSec = Math.floor(limitMsec / 1000)
-    this._wrap.textContent = limitSec.toString()
-    this._count++
-    this._timerId = setTimeout(() => this.countdownTimer(), 1000)
+  private countdownTimer(): Promise<void> {
+    return new Promise((resolve) => {
+      const counter = () => {
+        let limitMsec = this._limit - (1000 * this._count)
+        const limitSec = Math.floor(limitMsec / 1000)
+        this._wrap.textContent = limitSec.toString()
+        this._count++
+        this._timerId = setTimeout(counter, 1000)
 
-    if (limitMsec <= 0) {
-      clearTimeout(this._timerId)
-      this._count = 0
-    }
-  }
+        if (limitMsec === 0) {
+          clearTimeout(this._timerId)
+          this._count = 0
+          resolve()
+        }
+      }
 
-  public countdown(): void {
-    this.countdownTimer()
+      counter()
+    })
   }
 
   // タイマーを一時的に止める
