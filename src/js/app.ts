@@ -75,7 +75,7 @@ class TouchGame {
     const beforeScreen = document.querySelector('.js-content-before-screen') as HTMLElement
     const playingScreen = document.querySelector('.js-content-playing-screen') as HTMLElement
     const finishScreen = document.querySelector('.js-content-after-screen') as HTMLElement
-    const limit = 1000 * 3 // 3分
+    const limit = 1000 * 60 * 3 // 3分
     this._timer = new Timer(document.querySelector('.js-state-time'), limit, this.indicateFinishScreen.bind(this))
 
     this._startBtn.style.display = 'none'
