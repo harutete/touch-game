@@ -110,10 +110,13 @@ class TouchGame {
     this.setIngredientsPanel()
   }
 
-  // TODO 呼び出すたびにulの中身を消す処理を追加する
   private setIngredientsList(): void {
     const outputElem = document.querySelector('.js-content-necessary-ingredients')
-    const ul = document.createElement('ul')
+    const ul = document.querySelector('.js-necessary-ingredients-list')
+
+    if (ul.children.length) {
+      ul.innerHTML = ''
+    }
 
     this._selectedMenu.ingredients
       .forEach((item: { [key: string]: any }) => {
