@@ -14,7 +14,6 @@ import {
   appendClass,
   removeClass,
   toggleClass,
-  throttleEvent
 } from './utils'
 
 class TouchGame {
@@ -53,7 +52,7 @@ class TouchGame {
 
     // orientationchangeイベントが頻発した場合の為に、イベントを間引く
     window.addEventListener('orientationchange', () => {
-      throttleEvent(this.checkOrientation.bind(this), 256) // 16フレーム
+      this.checkOrientation()
     })
   }
 
