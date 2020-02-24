@@ -23,7 +23,7 @@ export default class Timer {
         this._count++
         this._timerId = setTimeout(counter, 1000)
 
-        if (limitMsec === 0) {
+        if (limitMsec < 0) {
           clearTimeout(this._timerId)
           this._count = 0
           resolve()
