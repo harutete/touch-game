@@ -50,7 +50,6 @@ class TouchGame {
       })
     }
 
-    // orientationchangeイベントが頻発した場合の為に、イベントを間引く
     window.addEventListener('orientationchange', () => {
       this.checkOrientation()
     })
