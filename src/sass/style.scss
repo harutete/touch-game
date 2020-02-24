@@ -74,7 +74,7 @@ img {
     text-align: center;
     padding: 15px;
   }
-  &-before-screen {
+  &-before-screen__inner {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -282,6 +282,20 @@ img {
       }
     }
   }
+  &-after-screen {
+    body[data-script-enabled="true"] & {
+      display: none;
+    }
+  }
+  &-after-screen__inner {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    & > * + * {
+      margin-top: 15px;
+    }
+  }
 }
 
 // title
@@ -424,7 +438,8 @@ img {
 }
 
 .btn {
-  &-start {
+  &-start,
+  &-restart {
     position: relative;
     cursor: pointer;
     display: inline-block;

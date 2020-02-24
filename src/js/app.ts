@@ -76,7 +76,8 @@ class TouchGame {
   private async indicatePlayingScreen(): Promise<void> {
     const playingScreen = document.querySelector('.js-content-playing-screen') as HTMLElement
     const beforeScreen = document.querySelector('.js-content-before-screen') as HTMLElement
-    const limit = 1000 * 60 * 3 // 3分
+    // const limit = 1000 * 60 * 3 // 3分
+    const limit = 1000 * 3 // 3分
     this._timer = new Timer(document.querySelector('.js-state-time'), limit)
 
     this._startBtn.style.display = 'none'
@@ -84,9 +85,27 @@ class TouchGame {
     beforeScreen.style.display = 'none'
 
     await this._timer.countdownTimer()
-    console.log('hoge')
+    this.indicateFinishScreen()
   }
 
+  private indicateFinishScreen(): void {
+    const hdg = document.querySelector('.js-hdg-01')
+    const isBound = 'is-bound'
+    const playingScreen = document.querySelector('.js-content-playing-screen') as HTMLElement
+    const finishScreen = document.querySelector('.js-content-after-screen') as HTMLElement
+    const restartBtn = document.querySelector('.js-btn-restart')
+
+    playingScreen.style.display = 'none'
+    finishScreen.style.display = 'block'
+    appendClass(hdg, isBound)
+
+    restartBtn.addEventListener('click', () => {
+      removeClass(hdg, isBound)
+      this.indicatePlayingScreen()
+      this._totalScore.init()
+      this.setSelectedMenuContent()
+    })
+  }
   private setSelectedMenuContent(): void {
     const menu = menuData
     this._selectedMenu = menu[Math.floor(Math.random() * menu.length)]
