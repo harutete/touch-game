@@ -22,6 +22,7 @@ class TouchGame {
   private _totalScore: any
   private _timer: any | null
   private _checkDeviceAndOrientation: any
+  private _isScreenVertical: boolean
 
   constructor() {
     this._startBtn = document.querySelector('.js-btn-start')
@@ -29,41 +30,45 @@ class TouchGame {
     this._totalScore = new AddScore(document.querySelector('.js-state-score'))
     this._timer = null
     this._checkDeviceAndOrientation = new CheckDeviceAndOrientation()
+    this._isScreenVertical = false
   }
 
   public init(): void {
-    const hdg = document.querySelector('.js-hdg-01')
-    const isBound = 'is-bound'
-    const isScreenVertical: boolean = this._checkDeviceAndOrientation.checkDeviceOrientation()
+    this._isScreenVertical = this._checkDeviceAndOrientation.checkDeviceOrientation()
 
     document.body.setAttribute('data-script-enabled', 'true')
 
-    if (isScreenVertical) {
+    if (this._isScreenVertical) {
       appendClass(document.querySelector('.js-content-disabled'), 'is-disabled')
     } else {
-      appendClass(hdg, isBound)
-      this._startBtn.addEventListener('click', () => {
-        removeClass(hdg, isBound)
-        this.indicatePlayingScreen()
-        this._totalScore.init()
-        this.setSelectedMenuContent()
-      })
+      appendClass(document.querySelector('.js-hdg-01'), 'is-bound')
     }
+
+    this._startBtn.addEventListener('click', this.setPlayingScreen)
 
     window.addEventListener('orientationchange', () => {
       this.checkOrientation()
     })
   }
 
+  private setPlayingScreen(): void {
+    if (!this._isScreenVertical) {
+      removeClass(document.querySelector('.js-hdg-01'), 'is-bound')
+      this.indicatePlayingScreen()
+      this._totalScore.init()
+      this.setSelectedMenuContent()
+    }
+  }
+
   // スマホの向きを変えたときに縦向きか横向きか判定して処理を変える
   private checkOrientation(): void {
     const disabledContent = document.querySelector('.js-content-disabled')
-    const isScreenVertical: boolean = this._checkDeviceAndOrientation.checkDeviceOrientation()
+    this._isScreenVertical = this._checkDeviceAndOrientation.checkDeviceOrientation()
 
-    if (isScreenVertical) {
+    if (this._isScreenVertical) {
       appendClass(disabledContent, 'is-disabled')
     } else if (
-      !isScreenVertical &&
+      !this._isScreenVertical &&
       disabledContent.classList.contains('is-disabled')
     ) {
       removeClass(disabledContent, 'is-disabled')
@@ -100,13 +105,9 @@ class TouchGame {
     finishScreen.style.display = 'block'
     appendClass(hdg, isBound)
 
-    restartBtn.addEventListener('click', () => {
-      removeClass(hdg, isBound)
-      this.indicatePlayingScreen()
-      this._totalScore.init()
-      this.setSelectedMenuContent()
-    })
+    restartBtn.addEventListener('click', this.setPlayingScreen)
   }
+
   private setSelectedMenuContent(): void {
     const menu = menuData
     this._selectedMenu = menu[Math.floor(Math.random() * menu.length)]
