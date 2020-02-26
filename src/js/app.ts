@@ -44,9 +44,13 @@ class TouchGame {
       appendClass(document.querySelector('.js-hdg-01'), 'is-bound')
     }
 
-    this._startBtn.addEventListener('click', this.setPlayingScreen.bind(this))
+    this._startBtn.addEventListener('click', () => {
+      this.setPlayingScreen()
+    })
 
-    window.addEventListener('orientationchange', this.checkOrientation.bind(this))
+    window.addEventListener('orientationchange', () => {
+      this.checkOrientation()
+    })
   }
 
   private setPlayingScreen(): void {
@@ -103,7 +107,9 @@ class TouchGame {
     finishScreen.style.display = 'block'
     appendClass(hdg, isBound)
 
-    restartBtn.addEventListener('click', this.setPlayingScreen)
+    restartBtn.addEventListener('click', () => {
+      this.setPlayingScreen()
+    })
   }
 
   private setSelectedMenuContent(): void {
@@ -172,10 +178,14 @@ class TouchGame {
     const completeBtn = document.querySelector('.js-btn-complete')
 
     panels.forEach(item => {
-      item.addEventListener('click', this.togglePanelClass)
+      item.addEventListener('click', (event) => {
+        this.togglePanelClass(event)
+      })
     })
 
-    completeBtn.addEventListener('click', this.checkIngredientsCombination.bind(this))
+    completeBtn.addEventListener('click', () => {
+      this.checkIngredientsCombination()
+    })
   }
 
   private togglePanelClass(event: { [key: string]: any }): void {
