@@ -16,7 +16,7 @@ export default class Timer {
     this._callback = callback
   }
 
-  private countdownTimer(): void {
+  public countdownTimer(): void {
     const counter = () => {
       let limitMsec = this._limit - (1000 * this._count)
       const limitSec = Math.floor(limitMsec / 1000)

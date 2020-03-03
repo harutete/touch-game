@@ -31,9 +31,11 @@ class TouchGame {
     this._timer = null
     this._checkDeviceAndOrientation = new CheckDeviceAndOrientation()
     this._isScreenVertical = false
+
+    this.init()
   }
 
-  public init(): void {
+  private init(): void {
     this._isScreenVertical = this._checkDeviceAndOrientation.checkDeviceOrientation()
 
     document.body.setAttribute('data-script-enabled', 'true')
@@ -259,4 +261,4 @@ class TouchGame {
   }
 }
 
-new TouchGame().init()
+new TouchGame()
