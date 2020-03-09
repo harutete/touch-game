@@ -12,6 +12,6 @@ export default class ShuffleArray {
       [array[i], array[randomIndex]] = [array[randomIndex], array[i]]
     }
 
-      return array
+    return array
   }
 }
