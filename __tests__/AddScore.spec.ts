@@ -8,7 +8,7 @@ describe('AddScore', () => {
       const addScore = new AddScore(wrap)
       addScore.appendScore(score)
 
-      expect(addScore._totalScore).toBe(30)
+      expect(addScore.totalScore).toBe(30)
       expect(wrap.textContent).toBe('30')
     })
   })
