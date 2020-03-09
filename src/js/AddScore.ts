@@ -1,6 +1,6 @@
 export default class AddScore {
   private _wrap: HTMLElement | Element
-  private _totalScore: number | null
+  public _totalScore: number | null
   private _count: number
 
   constructor(wrap: HTMLElement | Element) {
