@@ -1,6 +1,3 @@
-import { promises } from "dns";
-import { resolve } from "url";
-
 export default class Timer {
   private readonly _limit: number
   private _wrap: HTMLElement
