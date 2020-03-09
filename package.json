@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "start": "webpack --watch",
-    "start:dev": "webpack-dev-server --hot --inline --watch-content-base --open-page index.html"
+    "start:dev": "webpack-dev-server --hot --inline --watch-content-base --open-page index.html",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/jest": "^25.1.3",
