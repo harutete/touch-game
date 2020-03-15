@@ -93,7 +93,7 @@ class TouchGame {
     beforeScreen.style.display = 'none'
 
     if (finishScreen.style.display === 'block') {
-      finishScreen.style.display = 'none'
+      // finishScreen.style.display = 'none'
     }
 
     this._timer.countdownTimer()

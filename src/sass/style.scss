@@ -296,6 +296,15 @@ img {
       margin-top: 15px;
     }
   }
+  &-total-score {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 20px 0 0 -15px;
+    &__item {
+      margin-left: 15px;
+    }
+  }
 }
 
 // title
@@ -359,6 +368,14 @@ img {
     &::after {
       margin-left: 15px;
     }
+  }
+  &-total-score {
+    color: $color-orange;
+    font: {
+      size: 2.5rem;
+      weight: normal;
+    }
+    line-height: 1;
   }
 }
 
@@ -433,6 +450,20 @@ img {
     font: {
       size: 2rem;
       weight: bold;
+    }
+  }
+  &-game-end {
+    font-size: 2rem;
+  }
+  &-total-score {
+    font-size: 4rem;
+    &-wrap {
+      color: $color-orange;
+      font: {
+        size: 2rem;
+        weight: bold;
+      }
+      line-height: 1;
     }
   }
 }
